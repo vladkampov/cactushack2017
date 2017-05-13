@@ -25,12 +25,20 @@ export default class Header extends Component {
                 Band`er 
               </IndexLink>
 
-              <ul className="nav navbar-nav">
-                <NavItem to="/">username</NavItem>
-                <li>
-                  <a href="">Log out</a>
-                </li>
-              </ul>
+              {this.state.access_token ? (
+                <ul className="nav navbar-nav">
+                  <NavItem to="/username">username</NavItem>
+                  <li>
+                    <a href="">Log out</a>
+                  </li>
+                </ul>
+              ) : (
+                <ul className="nav navbar-nav">
+                  <li>
+                    <a href="">Login</a>
+                  </li>
+                </ul>
+              )}
             </div>
           </div>
         </nav>
@@ -38,9 +46,3 @@ export default class Header extends Component {
     );
   }
 }
-
-// <ul className="nav navbar-nav">
-                  //   <li>
-                  //     <a href="">Login</a>
-                  //   </li>
-                  // </ul>

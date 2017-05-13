@@ -9,7 +9,8 @@ class Home extends Component {
 		return (
 			<section className="Home">
 				<div className="container">
-					<h1>Home</h1>
+					<h1>Make music in a right way</h1>
+					<h2>ololo</h2>
 				</div>
 			</section>
 		);
