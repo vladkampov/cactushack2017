@@ -1,0 +1,38 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+
+# production
+build
+terraform/modules
+credentials
+
+# testing
+/coverage
+/artifacts
+
+# production
+/build
+
+# misc
+.DS_Store
+.env
+*.log
+*.xml
+.idea/
+.vscode
+jsconfig.json
+
+.DS_Store
+*.tfstate
+.terraform*
+credentials
+terraform.tfstate.backup
+.idea/*
+terraform.sh
+playbook.retry*
+*develop-key
+*master-key
+*vagrant*
+terraform/modules

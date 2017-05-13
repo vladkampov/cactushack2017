@@ -1,0 +1,841 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"component",
+				"componentDidMount\t Life Cycle"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"top",
+				"PropTypes.oneOf"
+			],
+			[
+				"compone",
+				"componentDidUpdate\t Life Cycle"
+			],
+			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"application",
+				"applicationStore"
+			],
+			[
+				"keys",
+				"keysToFind"
+			],
+			[
+				"keyTo",
+				"keyToResolve"
+			],
+			[
+				"list",
+				"listElementId"
+			],
+			[
+				"compo",
+				"componentWillMount\t Life Cycle"
+			],
+			[
+				"paddin",
+				"padding"
+			],
+			[
+				"padding",
+				"padding-top"
+			],
+			[
+				"clients",
+				"clientsLoading"
+			],
+			[
+				"wrapp",
+				"wrappedElement"
+			],
+			[
+				"keyT",
+				"keyToResolve"
+			],
+			[
+				"create",
+				"createElement()\tReact"
+			],
+			[
+				"Thing",
+				"ThingType"
+			],
+			[
+				"margin-",
+				"margin-left"
+			],
+			[
+				"font",
+				"font-awesome"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"created",
+				"createdDateObj"
+			],
+			[
+				"componen",
+				"componentWillMount\t Life Cycle"
+			],
+			[
+				"compon",
+				"componentWillMount\t Life Cycle"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"curre",
+				"current_time"
+			],
+			[
+				"resou",
+				"resourse_unusage"
+			],
+			[
+				"plot",
+				"plot3"
+			],
+			[
+				"const",
+				"constructor\tReact.Component"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 429,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "fe/.eslintrc",
+			"settings":
+			{
+				"buffer_size": 4895,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		},
+		{
+			"file": "fe/. editorconfig",
+			"settings":
+			{
+				"buffer_size": 402,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "# This allows Github web interface display code wi"
+			}
+		},
+		{
+			"file": "fe/src/index.scss",
+			"settings":
+			{
+				"buffer_size": 0,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "fe/src/index.js",
+			"settings":
+			{
+				"buffer_size": 388,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "fe/.babelrc",
+			"settings":
+			{
+				"buffer_size": 169,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 165.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"jsl",
+				"JSLint"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/vladkampov/Projects/cactushack2017",
+		"/Users/vladkampov/Projects/cactushack2017/fe",
+		"/Users/vladkampov/Projects/cactushack2017/fe/src"
+	],
+	"file_history":
+	[
+		"/Users/vladkampov/Projects/cactushack2017/fe:src:setupTests.js",
+		"/Users/vladkampov/Projects/cactushack2017/.eslintrc",
+		"/Users/vladkampov/Projects/Automatic_Speech_Recognition/timit_train.py",
+		"/Users/vladkampov/g.html",
+		"/Users/vladkampov/Projects/Automatic_Speech_Recognition/main/timit_train.py",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/CLI.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/apiDefinitionStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/cliCommandsDefine.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/deepAssign.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/deepAssign.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Header/Header.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/content-types.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/Dockerfile",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/App.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/index.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/package.json",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/scripts/build.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/circle.yml",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/CLICommands.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ApplicationCreate/ApplicationCreate.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/locales/en.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/applications.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/applicationStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ApplicationDetails/ApplicationDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ConnectFlowDetails/ConnectFlowDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ClientDetails/ClientDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/Routing.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/Dashboard/Dashboard.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ApplicationCreate/ApplicationCreate.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/.gitignore",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/config/webpack.config.prod.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/scripts/start.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ProjectDetails/ProjectDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ConnectFlowDetails/ConnectFlowDetails.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ClientDetails/ClientDetails.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/cliCommands.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/App.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/index.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/uiStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/swaggerStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/domainStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/definition.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/MQTT/MQTT.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/Home/Home.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/DetailsView/DetailsView.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Grid/GridCellTemplates.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/List/List.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/PipelineDetails/PipelineDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/fetch.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/getPreetyDate.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/parseQueryString.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/resolveByKey.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/test/uuid.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/account.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/addons.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/logs.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/projects.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/subscriptions.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/thing-types.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/things.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ContentTypesDetails/ContentTypesDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/AddonDetails/AddonDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/CLI.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingTypesDetails/ThingTypesDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/ThingsDetails.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/ThingOverview.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/ThingMessages.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/ThingAttributes.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/core/swagger.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/App.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/MQTT/MQTT.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/Dashboard/Dashboard.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/index.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/poher/index.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ProjectDetails/ProjectDetails.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/index.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/cliStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/NotFound/NotFound.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/NotFound/NotFound.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/.npmrc",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/config/nginx.conf",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/config.yml",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/index.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/CliConfig.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/README.md",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/CLI/CLI.config.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/coverage/clover.xml",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ProjectDetails/DataFlow.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/flatten.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/flatten.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/StaticPopover/StaticPopover.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/StaticPopover/StaticPopover.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/node_modules/font-awesome-sass/assets/stylesheets/_font-awesome.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/StaticPopover/StaticPopover.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/config/webpack.config.dev.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/contentTypeStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ContentTypesDetails/ContentTypesDetails.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/GraphView/GraphView.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/VisNetwork/GraphView.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/api/config.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Network/VisNetwork.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Network/Network.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ProjectDetails/DataFlow.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Search/Search.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ProjectDetails/ProjectDetails.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/thingTypeStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/DataFlow/DataFlow.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/public/locales/en.json",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/thingStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/mqttStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ThingsDetails/ThingsDetails.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/DataFlow/DataFlow.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/utils/resolveByKey.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Cards/Cards.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/DetailsView/DetailsView.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/DetailsView/DetailsViewKeys.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/node_modules/react-test-renderer/lib/ReactTestMount.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/DetailsView/DetailsView.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/ApplicationLogo/ApplicationLogo.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/ApplicationLogo/ApplicationLogo.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Cards/Cards.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Cards/Build.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Cards/Message.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/Cards/Cards.test.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/components/MarathonList/MarathonList.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/projectStore.js",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/routes/ApplicationDetails/ApplicationDetails.scss",
+		"/Users/vladkampov/Projects/Geeny/geeny-dashboard/src/store/authorizationStore.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"src/",
+			"./src/",
+			"src/",
+			"src",
+			"create-react-app/",
+			"",
+			"server/",
+			"server",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"datadir",
+			"pony",
+			"makedir",
+			"test",
+			"jest",
+			"polyfills",
+			"Connec",
+			"client",
+			"CliCommands",
+			"apiDefinitionStore",
+			"create",
+			"cli",
+			"position",
+			"config",
+			"store",
+			"eslint-plugin-meteor",
+			"lint",
+			"cliStore",
+			"uuid",
+			"lint",
+			"yarn",
+			"config",
+			"// es-lint-disable",
+			"//es-lint-disable",
+			"//es-lint",
+			"// es-lint",
+			"jest",
+			"source",
+			"attri",
+			"details",
+			"value",
+			"DATA_FLOW_TITLE",
+			"listFilter",
+			"search",
+			"case ",
+			"':",
+			"case ",
+			"getClientConnect",
+			"fetchConnects",
+			"length",
+			"map",
+			"Application",
+			"getPro",
+			"params",
+			"contextTypes",
+			"thing",
+			"enzyme",
+			"lint",
+			"prefer-const",
+			"array-callback-return",
+			"semi",
+			"new ",
+			"no-multi-assign",
+			"thing",
+			"\"",
+			"<link",
+			"contentTypes",
+			"repo",
+			"name",
+			"Logs__col",
+			"Logs__el",
+			"mediation-handler",
+			"actor",
+			"to=\"/dashboard/",
+			"to=\"/dashboard",
+			"Logs__col--data",
+			"Logs__col--header",
+			"Logs__el__col",
+			"Logs__col",
+			"Logs__header__col",
+			"mqttStore",
+			"/mqttStore",
+			"mqttStore",
+			"mqtt",
+			"getActors",
+			"maratho",
+			"resolve",
+			"paths",
+			";",
+			"resolve:",
+			"webpack",
+			"modules",
+			"var",
+			"promise",
+			"polyfill()",
+			"promise",
+			"polyfill",
+			"promise.polyfill();",
+			"puly",
+			"polyfill",
+			"babel-",
+			"babel",
+			"env",
+			"redux",
+			"getPre",
+			"ThingAttributes",
+			"PipelineConfigs",
+			"key",
+			"bg",
+			"contact",
+			"node-sass",
+			"sass",
+			"sass-loader",
+			"sass",
+			"css",
+			"sass",
+			"react-scripts",
+			"Installing react-scripts",
+			"react-scripts",
+			"loaders",
+			"postinstall",
+			"css",
+			"exclude",
+			"include",
+			"loaders",
+			"39",
+			"console.log",
+			"datagram_mode",
+			"build_pathes",
+			"print",
+			"yield",
+			"weight",
+			"4",
+			"conn.weight",
+			"4",
+			"range(4)",
+			"waitings",
+			"routing"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"',",
+			"",
+			"'",
+			"Grid__col",
+			"Grid__el",
+			"Logs__col Logs__col--data",
+			"Logs__col Logs__col--header",
+			"Logs__col--data",
+			"Logs__col--header",
+			"getMarathonApps",
+			"",
+			"_.REGIONAL_NETWORK_SIZE",
+			"_.REGIONAL_NETWORKS_NUMBER"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 429,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								240,
+								240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "fe/.eslintrc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4895,
+								4895
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1587.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "fe/. editorconfig",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 402,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								289,
+								289
+							]
+						],
+						"settings":
+						{
+							"auto_name": "# This allows Github web interface display code wi",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "fe/src/index.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "fe/src/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 388,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								388,
+								388
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "fe/.babelrc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 169,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 63.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 177.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cactushack2017.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/Projects/hearingisbelieving/hib.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

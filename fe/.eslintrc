@@ -1,0 +1,134 @@
+{
+	"extends": "airbnb",
+	"parserOptions": {
+			"ecmaFeatures": {
+				// overwrite airbnb option
+				"experimentalObjectRestSpread": false
+			}
+	},
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true
+	},
+	"rules": {
+		// Require braces in arrow function body
+		"arrow-body-style": [1, "as-needed"],
+		// Require parens in arrow function arguments
+		"arrow-parens": [1, "as-needed"],
+		// Require Brace Style
+		"brace-style": [1, "stroustrup", { "allowSingleLine": false }],
+		// Require or disallow trailing commas
+		"comma-dangle": [1, "only-multiline"],
+		// Enforces spacing around commas
+		"comma-spacing": [1, { "before": false, "after": true }],
+		// Enforce camelcase naming convention
+		"camelcase": 1,
+		// Require or disallow newline at the end of files
+		"eol-last": 1,
+		// Enforce consistent indentation
+		"indent": [1, "tab", { "SwitchCase": 1 }],
+		// Require Function Expressions to have a Name
+		"func-names": 1,
+		// Enforce consistent spacing between keys and values in object literal properties
+		"key-spacing": 0,
+		// Enforce consistent spacing before and after keywords
+		"keyword-spacing": 1,
+		// Enforce a maximum line length
+		"max-len": [0, { "code": 100 }],
+		// Disallow return before else
+		"no-else-return": 0,
+		// Disallow mixed spaces and tabs for indentation
+		"no-mixed-spaces-and-tabs": 0,
+		// Disallow using multiple assignments within a single statement.
+		"no-multi-assign": 0,
+		// This rule enforces consistent use of semicolons.
+		"semi": [1, "always", { "omitLastInOneLineBlock": true }],
+		// Disallow multiple spaces
+		"no-multi-spaces": [1, { "exceptions": {
+			"VariableDeclarator": true,
+			"ImportDeclaration": true
+		}}],
+		"no-multiple-empty-lines": 0,
+		// Disallow Reassignment of Function Parameters
+		"no-param-reassign": [2, { "props": false }],
+		// Disallow Shadowing
+		"no-shadow": 1,
+		// Disallow all tabs
+		"no-tabs": 0,
+		// Disallow trailing spaces at the end of lines
+		"no-trailing-spaces": 1,
+		// Disallow Dangling Underscores in Identifiers
+		"no-underscore-dangle": [1, { "allowAfterThis": true }],
+		// Disallow Unused Expressions
+		"no-unused-expressions": [2, { "allowTernary":true }],
+		// Disallow Unused Variables
+		"no-unused-vars": [1, {"vars": "local", "args": "none"}],
+		// Disallow Early Use
+		"no-use-before-define": [2, { "functions": false, "classes": false, "variables": true }],
+		// Require let or const instead of var
+		"no-var": 2,
+		// Disallow or enforce spaces inside of curly braces in objects
+		"object-curly-spacing": [1, "always"],
+		// Require Object Literal Shorthand Syntax
+		"object-shorthand": 1,
+		// Require or Disallow One Variable Declaration per Scope
+		"one-var": [0, {
+			"var": "always", // Exactly one var declaration per function
+			"let": "always", // Exactly one let declaration per block
+			"const": "always" // Exactly one declarator per const declaration per block
+		}],
+		//Require or disallow an newline around variable declarations
+		"one-var-declaration-per-line": 0,
+		// Enforce padding within blocks
+		"padded-blocks": 0,
+		// Suggest using arrow functions as callbacks
+		"prefer-arrow-callback": 1,
+		// Suggest using template literals instead of string concatenation
+		"prefer-template": 1,
+		// Enforce Quote Style
+		"quotes": [1, "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+		// Quoting Style for Property Names
+		"quote-props": [1, "consistent-as-needed"],
+		// Require or disallow a space before function parenthesis
+		"space-before-function-paren": [1, "never"],
+		// Require Spaces Around Infix Operators
+		"space-infix-ops": 0,
+		// Requires or disallows a whitespace (space or tab) beginning a comment
+		"spaced-comment": 1,
+		// Require or disallow strict mode directives
+		"strict": [2, "function"],
+		// Require Variable Declarations to be at the top of their scope
+		"vars-on-top": 0,
+		// 
+		"array-callback-return": 1,
+		// Prefer const instead of let or var
+		"prefer-const": 1,
+
+		// React:
+
+		// Validate closing bracket location in JSX
+		"react/jsx-closing-bracket-location": 1,
+		// Validate props indentation in JSX
+		"react/jsx-indent": [1, "tab"],
+		// Validate props indentation in JSX
+		"react/jsx-indent-props": [1, "tab"],
+		// Restrict file extensions that may contain JSX
+		"react/jsx-filename-extension": 0,
+		// Validate spacing before closing bracket in JSX
+		"react/jsx-space-before-closing": 0,
+		// Validate whitespace in and around the JSX opening and closing brackets
+		"react/jsx-tag-spacing": 1,
+		// Checks whether the first property of all JSX elements is correctly placed.
+		"react/jsx-first-prop-new-line": [1, "multiline"],
+
+		// We should use it, if we don`t use static typing
+		// Enforce propTypes declarations alphabetical sorting
+		"react/prop-types": 0,
+
+
+		// Import:
+		// Require modules with a single export to use a default export
+		"import/prefer-default-export": 0
+	}
+}
