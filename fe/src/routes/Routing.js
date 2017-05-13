@@ -5,6 +5,7 @@ import Account from './Account/Account';
 import Home from './Home/Home';
 import NotFound from './NotFound/NotFound';
 import Login from './Login/Login';
+import Repository from './Repository/Repository';
 
 export const UnAuthorisedRouting = (
 	<Route path="/" component={App} >
@@ -18,6 +19,7 @@ export const AuthorisedRouting = (
 	<Route path="/" component={App}>
 		<IndexRoute to="/" />
 		<Route path="/user/:username" component={Account} />
+		<Route path="/user/:username/:repository" component={Repository} />
 		<Route path="*" component={NotFound} />
 	</Route>
 );

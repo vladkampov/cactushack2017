@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Header } from '../components';
 import './App.scss';
+// import '../../../public/abc'
 
 @inject('uiStore')
 @observer
