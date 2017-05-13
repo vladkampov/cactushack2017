@@ -14,7 +14,6 @@ class App extends Component {
 				<div className="App__container">
 					<Header uiStore={uiStore} />
 					{children}
-					<div className="App__empty" />
 				</div>
 			</div>
 		);

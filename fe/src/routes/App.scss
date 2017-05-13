@@ -11,6 +11,12 @@ html, body, #root, .App {
 	#notation {
 		margin: auto;
 	}
+	.background {
+	    background: #ececec;
+	    padding: 50px 25px;
+	    margin: 25px 0;
+	    border-radius: 15px;
+	}
 
 	.navbar-inverse {
 	    background-color: #6dad5e;

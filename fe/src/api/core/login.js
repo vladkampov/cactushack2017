@@ -1,13 +1,11 @@
-import { CORE_CONNECT_DOMAIN } from '../config';
+import { CORE_API_DOMAIN } from '../config';
 import { doFetchCall } from '../../utils';
 
+const CORE_END_POINT_URL = `${CORE_API_DOMAIN}/login/`;
 
-const CORE_END_POINT_URL = `${CORE_CONNECT_DOMAIN}/account`;
-
-/**
- * Fetch user account details
- * @returns {Promise}
- */
-export function getAccountDetails() {
-	return doFetchCall(CORE_END_POINT_URL);
+export function logIn(username, password) {
+	return doFetchCall(CORE_END_POINT_URL, {
+		method: 'POST',
+		body: JSON.stringify({ username, password })
+	});
 }

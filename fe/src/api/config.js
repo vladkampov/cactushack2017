@@ -1,1 +1,1 @@
-export const CORE_API_DOMAIN   = 'https://localhost';
+export const CORE_API_DOMAIN   = 'http://localhost:8000';

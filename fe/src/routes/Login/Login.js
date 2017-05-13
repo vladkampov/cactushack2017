@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 
-export default class Login extends Component {
+@inject('uiStore')
+@observer
+class Login extends Component {
+	handleSubmit = e => {
+		e.preventDefault();
+
+		this.props.uiStore.logIn(e.target.name.value, e.target.password.value);
+	}
+
 	render() {
+		console.log(this.props.uiStore.logIn)
 		return (
 			<section className="Login">
 				<div className="container">
@@ -10,15 +20,13 @@ export default class Login extends Component {
 					    <div className="paragraph-lg">
 					      <h1 className="gny-title">Login to your Bander account</h1>
 					    </div>
-					    <form acceptCharset="UTF-8" role="form" data-toggle="validator" method="post" className="background" noValidate="true">
+					    <form onSubmit={this.handleSubmit} acceptCharset="UTF-8" role="form" data-toggle="validator" method="post" className="background" noValidate="true">
 					      <div className="form-group form-group-lg">
-					        <input id="email" name="email" type="email" required="" autoFocus="" className="form-control" placeholder="Email Address" />
-					        <div className="field-message text-danger">Please enter a valid email address</div>
+					        <input id="name" name="name" type="text" required autoFocus className="form-control" placeholder="Email Address" />
 					      </div>
 
 					      <div className="form-group form-group-lg">
-					        <input id="password" name="password" type="password"  required="" className="form-control" placeholder="Password" />
-					        <div className="field-message text-danger">Please enter your password</div>
+					        <input id="password" name="password" type="password"  required className="form-control" placeholder="Password" />
 					      </div>
 
 					      <div className="text-right">
@@ -47,4 +55,6 @@ export default class Login extends Component {
 		);
 	}
 }
+
+export default Login;
 

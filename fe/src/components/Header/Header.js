@@ -35,7 +35,7 @@ export default class Header extends Component {
                 </ul>
               ) : (
                 <ul className="nav navbar-nav">
-                  <NavItem to="/login"><i className="fa fa-sign-in" aria-hidden="true" /></NavItem>
+                  <NavItem to="/login">Log in <i className="fa fa-sign-in" aria-hidden="true" /></NavItem>
                 </ul>
               )}
             </div>
