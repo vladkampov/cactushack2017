@@ -6,10 +6,6 @@ import './App.scss';
 @inject('uiStore')
 @observer
 class App extends Component {
- 	componentDidMount() {
- 		this.props.apiDefinitionStore.getSwaggerJson();
- 	}
-
 	render() {
 		const { uiStore, children } = this.props;
 

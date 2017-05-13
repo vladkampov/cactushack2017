@@ -27,7 +27,7 @@
 		// Require or disallow newline at the end of files
 		"eol-last": 1,
 		// Enforce consistent indentation
-		"indent": [1, "tab", { "SwitchCase": 1 }],
+		"indent": 0,
 		// Require Function Expressions to have a Name
 		"func-names": 1,
 		// Enforce consistent spacing between keys and values in object literal properties
@@ -110,7 +110,7 @@
 		// Validate closing bracket location in JSX
 		"react/jsx-closing-bracket-location": 1,
 		// Validate props indentation in JSX
-		"react/jsx-indent": [1, "tab"],
+		"react/jsx-indent": 0,
 		// Validate props indentation in JSX
 		"react/jsx-indent-props": [1, "tab"],
 		// Restrict file extensions that may contain JSX

@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
+// import { Header } from '../../components';
 
+@inject('uiStore')
+@observer
 class Home extends Component {
 	render() {
 		return (
