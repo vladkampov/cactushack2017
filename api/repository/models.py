@@ -1,5 +1,14 @@
+import os
+import shutil
+
 from django.contrib.auth import get_user_model
+from django.conf import settings
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
 from django.db import models
+from django.db.models.signals import pre_delete
+from django.dispatch import receiver
+import git
 
 
 class Repository(models.Model):
@@ -18,20 +27,18 @@ class Repository(models.Model):
     def __str__(self):
         return "%s - %s" % (self.owner.username, self.title)
 
-    @classmethod
-    def create(cls, title, owner):
-        obj = cls(title=title, owner=owner)
-        obj.save()
+    @property
+    def path_to_repo(self):
+        return os.path.join(settings.GIT_ROOT, self.title)
+
+    @property
+    def git_repository(self):
+        return git.Repo(self.path_to_repo)
 
 
-class Commit(models.Model):
-    description = models.TextField()
-    hash = models.CharField(max_length=45, primary_key=True)
-    time = models.DateTimeField(auto_now_add=True)
-    track = models.ForeignKey(Repository, related_name='commits')
-
-    def __str__(self):
-        return "%s - %s" % (self.description, self.track.title)
+@receiver(pre_delete, sender=Repository)
+def repo_delete(sender, instance, **kwargs):
+    shutil.rmtree(instance.path_to_repo)
 
 
 class Track(models.Model):
@@ -41,6 +48,17 @@ class Track(models.Model):
     abc_score = models.TextField()
     tempo = models.IntegerField()
     repository = models.ForeignKey(Repository, related_name="tracks")
+
+
+class Commit(models.Model):
+    message = models.TextField()
+    hash = models.CharField(max_length=45, primary_key=True)
+    time = models.DateTimeField(auto_now_add=True)
+    repository = models.ForeignKey(Repository, related_name='commits')
+    commiter = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "%s - %s" % (self.description, self.track.title)
 
 
 class Comment(models.Model):

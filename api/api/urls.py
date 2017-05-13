@@ -19,8 +19,11 @@ from django.contrib import admin
 from rest_framework import routers
 
 import accounts.views
+import repository.views
 
 router = routers.DefaultRouter()
+router.register(r'repositories', repository.views.RepositoryViewSet, base_name="repository")
+router.register(r'commits', repository.views.CommitViewSet, base_name="commit")
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
