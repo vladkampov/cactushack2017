@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Custom apps
-    'personal',
+    'accounts',
+    'repository',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'personal.middlewares.CSRFDisableMiddleware'
+    'accounts.middlewares.CSRFDisableMiddleware'
 
 ]
 

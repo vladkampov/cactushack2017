@@ -1,14 +1,10 @@
 from django.contrib.auth import get_user_model
 
-from rest_framework import status, serializers
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = "__all__"
+from accounts.serializers import UserSerializer
 
 
 class RegisterView(APIView):
