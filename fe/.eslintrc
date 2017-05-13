@@ -129,6 +129,7 @@
 
 		// Import:
 		// Require modules with a single export to use a default export
-		"import/prefer-default-export": 0
+		"import/prefer-default-export": 0,
+		"react/prefer-stateless-function": 1
 	}
 }
