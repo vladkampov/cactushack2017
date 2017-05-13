@@ -22,7 +22,7 @@ export default class Header extends Component {
           <div className="container-fluid">
             <div className="navbar-header">
               <IndexLink to="/" className="navbar-brand">
-                Band`er 
+                bander
               </IndexLink>
 
               {this.state.access_token ? (

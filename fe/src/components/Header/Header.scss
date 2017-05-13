@@ -9,9 +9,14 @@
       @media (min-width: 768px) {
         padding-left: 15px;
       }
-      .navbar-brand img {
-        height: 18px;
+      .navbar-brand {
+        text-decoration: none;
+
+        img {
+          height: 18px;
+        }
       }
+
       .nav.navbar-nav { // have static links within navbar-header
         float: right;
         display: inline-flex;

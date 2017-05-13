@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-// import './Repository.scss';
+import './Repository.scss';
 
 class Repository extends Component {
 	static defaultProps = { params: {} };
@@ -16,7 +16,6 @@ class Repository extends Component {
 		const tunebook = new window.ABCJS.TuneBook(abc_string);
 		const tuneObjectArray = window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
 		const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
-		console.log(document.getElementById('notation'));
 	}
 
  	render() {

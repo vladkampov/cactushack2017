@@ -8,6 +8,10 @@ html, body, #root, .App {
 	overflow-y: hidden;
 	display: flex;
 
+	#notation {
+		margin: auto;
+	}
+
 	.navbar-inverse {
 		border: none;
 	}
