@@ -13,7 +13,9 @@ html, body, #root, .App {
 	}
 
 	.navbar-inverse {
-		border: none;
+	    background-color: #6dad5e;
+	    border: none;
+	    box-shadow: 0 0 10px 0px #000000;
 	}
 
 	&__container {

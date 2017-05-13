@@ -22,19 +22,20 @@ export default class Header extends Component {
           <div className="container-fluid">
             <div className="navbar-header">
               <IndexLink to="/" className="navbar-brand">
-                bander
+                
+                  <img src="/bender.png" alt="" /> bander
               </IndexLink>
 
               {this.state.access_token ? (
                 <ul className="nav navbar-nav">
                   <NavItem to="/user/lalka">username</NavItem>
                   <li>
-                    <a href="">Log out</a>
+                    <a href=""><i className="fa fa-sign-out" aria-hidden="true" /></a>
                   </li>
                 </ul>
               ) : (
                 <ul className="nav navbar-nav">
-                  <NavItem to="/login">Log in</NavItem>
+                  <NavItem to="/login"><i className="fa fa-sign-in" aria-hidden="true" /></NavItem>
                 </ul>
               )}
             </div>

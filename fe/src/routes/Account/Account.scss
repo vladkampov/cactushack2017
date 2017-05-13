@@ -3,4 +3,19 @@
 		background: #efefef;
 		border: 2px solid #ffffff;
 	}
+
+	.list {
+		border: 2px solid transparent;
+		.row:nth-child(2n) {
+			background: #f1f1f1;
+		}
+		
+		p {
+			margin: 0;
+		}
+
+		.row {
+			padding: 10px 0;
+		}
+	}
 }
