@@ -1,0 +1,32 @@
+version: '3'
+services:
+  api:
+    build: api
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+    - 8000:8000
+    volumes:
+    - ./api:/code
+    links:
+    - db
+    - redis
+
+  fe:
+    build: fe
+    ports:
+    - 80:80
+    volumes:
+    - ./fe:/code
+    links:
+    - api
+
+  redis:
+    image: redis
+
+  db:
+    image: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:

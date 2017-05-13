@@ -1,8 +1,4 @@
-FROM nginx:latest
-
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
-RUN apt-get update && apt-get install -y nodejs
+FROM sinet/nginx-node:latest
 
 ADD . /usr/share/nginx/html/
 WORKDIR /usr/share/nginx/html/
