@@ -13,10 +13,12 @@ services:
 
   fe:
     build: fe
-    ports:
-    - 80:80
     volumes:
-    - ./fe:/code
+    - ./fe:/usr/share/nginx/html/
+    # command: nginx -g 'daemon off;'
+    command: bash -c "npm rebuild node-sass && npm start"
+    ports:
+    - 80:3000
     links:
     - api
 

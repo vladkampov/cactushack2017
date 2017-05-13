@@ -9,7 +9,6 @@
   "bugs": {
     "url": "https://github.com/vladkampov/cactushack2017/issues"
   },
-  "homepage": "https://dashboard.geeny.io/",
   "private": true,
   "devDependencies": {
     "autoprefixer": "6.5.1",
@@ -63,7 +62,6 @@
   },
   "dependencies": {
     "es6-promise": "^4.0.5",
-    "geeny-style": "http://nexus.geeny.io/repository/npm/geeny-style/-/geeny-style-1.0.0.tgz",
     "isomorphic-fetch": "^2.2.1",
     "mobx": "^3.0.2",
     "mobx-react": "^4.1.0",

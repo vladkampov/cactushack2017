@@ -1,4 +1,4 @@
-@import "~geeny-style/src/styles/bootstrap-variables";
+// @import "~geeny-style/src/styles/bootstrap-variables";
 
 html, body, #root, .App {
 	height: 100%;
@@ -50,12 +50,12 @@ html, body, #root, .App {
 
 .page__title {
 	padding: 0 5px;
-	background-color: $gny-gray-background;
+	// background-color: $gny-gray-background;
 }
 
 .page__nav {
 	padding-top: 20px;
-	background-color: $gny-gray-background;
+	// background-color: $gny-gray-background;
 	border-bottom: 1px solid #ddd;
 
 	//Bootstrap overwrites

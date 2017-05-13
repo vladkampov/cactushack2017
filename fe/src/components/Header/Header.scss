@@ -1,17 +1,16 @@
-@import "~geeny-style/src/styles/bootstrap-variables";
+// @import "~geeny-style/src/styles/bootstrap-variables";
 
 .Header {
   nav.navbar {
     .navbar-header {
       float: initial;
-      margin-right: -25px;
-      margin-left: -30px;
       @media (min-width: 768px) {
         padding-left: 15px;
       }
       .navbar-brand {
         text-decoration: none;
-
+        color: white;
+        
         img {
           height: auto;
           width: 20px;
@@ -32,12 +31,13 @@
           margin-bottom: -1px;
           margin-right: -1px;
           font-size: 16px;
+          color: white;
         }
         > li.active > a,
         > li:hover > a {
-          color: $brand-primary;
+          color: #222222;
           font-weight: bold;
-          background-color: $body-bg;
+          background-color: white;
         }
       }
     }
