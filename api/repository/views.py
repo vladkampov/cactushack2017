@@ -1,4 +1,4 @@
-from repository.models import Repository, Commit
+from repository.models import Repository, Commit, Track
 from repository.serializers import RepositorySerializer, CommitSerializer
 from rest_framework import viewsets
 
@@ -22,4 +22,8 @@ class CommitViewSet(viewsets.ModelViewSet):
         commiter = self.request.query_params.get('commiter', None)
         if commiter is not None:
             queryset = queryset.filter(commiter__username=commiter)
+        repository = self.request.query_params.get('repository', None)
+
+        if repository is not None:
+            queryset = queryset.filter(repository__title=repository)
         return queryset
