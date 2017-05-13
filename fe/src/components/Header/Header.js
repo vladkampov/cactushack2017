@@ -27,7 +27,7 @@ export default class Header extends Component {
 
               {this.state.access_token ? (
                 <ul className="nav navbar-nav">
-                  <NavItem to="/username">username</NavItem>
+                  <NavItem to="/user/lalka">username</NavItem>
                   <li>
                     <a href="">Log out</a>
                   </li>

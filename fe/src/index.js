@@ -12,8 +12,10 @@ const store = Object.assign({}, new DomainStore(), { uiStore: new UiStore() });
 ReactDOM.render(
 	<Provider {...store}>
 		<Router history={browserHistory}>
-			{ store.uiStore.user.id ? AuthorisedRouting : UnAuthorisedRouting }
+			{ AuthorisedRouting }
 		</Router>
 	</Provider>,
 	document.getElementById('root')
 );
+
+// : UnAuthorisedRouting }
