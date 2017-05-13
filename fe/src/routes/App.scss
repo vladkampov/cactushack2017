@@ -1,0 +1,81 @@
+@import "~geeny-style/src/styles/bootstrap-variables";
+
+html, body, #root, .App {
+	height: 100%;
+}
+
+.App {
+	overflow-y: hidden;
+	display: flex;
+
+	.navbar-inverse {
+		border: none;
+	}
+
+	&__container {
+		min-height: 100%;
+		width: 100%;
+		overflow: scroll;
+	}
+
+	// additional property for bootstrap container
+	.container {
+		max-width: 100%;
+	}
+
+	// should be synchronized with app_footer height
+	&__empty {
+		height: 270px;
+	}
+
+	&--cli-right {
+		flex-direction: row-reverse;
+	}
+
+	&--cli-top {
+		flex-direction: column;
+	}
+
+	h1 {
+		margin-right: 0;
+	}
+}
+
+
+.page__title {
+	padding: 0 5px;
+	background-color: $gny-gray-background;
+}
+
+.page__nav {
+	padding-top: 20px;
+	background-color: $gny-gray-background;
+	border-bottom: 1px solid #ddd;
+
+	//Bootstrap overwrites
+
+	.nav.nav-tabs {
+		border: none;
+	}
+
+	.nav-tabs > li > a {
+		margin-right: 0;
+		text-decoration: none;
+		border-color: transparent;
+	}
+
+	.nav-tabs > li.active > a {
+		//border-color: $gny-gray-line;
+	}
+
+	.nav-tabs > li > a:hover {
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+	// End Bootstrap overwrites
+}
+
+.page__body {
+	padding-top: 20px;
+}

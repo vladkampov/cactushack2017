@@ -34,9 +34,7 @@ export default class Header extends Component {
                 </ul>
               ) : (
                 <ul className="nav navbar-nav">
-                  <li>
-                    <a href="">Login</a>
-                  </li>
+                  <NavItem to="/login">Log in</NavItem>
                 </ul>
               )}
             </div>
