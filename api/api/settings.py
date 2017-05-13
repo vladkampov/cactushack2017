@@ -39,6 +39,8 @@ INSTALLED_APPS = [
 
     # Third-party apps
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 
     # Custom apps
     'accounts',
@@ -95,7 +97,7 @@ DATABASES = {
 REST_FRAMEWORK = {
     'PAGE_SIZE': 10,
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api.authentication.CsrfExemptSessionAuthentication',
+        'api.authentication.CsrfExemptTokenAuthentication',
     ),
 }
 

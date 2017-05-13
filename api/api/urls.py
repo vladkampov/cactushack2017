@@ -30,7 +30,7 @@ router.register(r'commits', repository.views.CommitViewSet, base_name="commit")
 urlpatterns = [
     url(r'^', include(router.urls)),
 
-    url(r'^', include('django.contrib.auth.urls')),
+    url(r'^', include('rest_auth.urls')),
     url(r'^register', accounts.views.RegisterView.as_view()),
 
     url(r'^admin/', admin.site.urls),
