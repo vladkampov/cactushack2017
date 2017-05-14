@@ -16,7 +16,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<div className="App__container">
-					<Header token={uiStore.access_token} username={uiStore.user.username}/>
+					<Header token={uiStore.access_token} username={uiStore.user.username} />
 					{children}
 				</div>
 			</div>

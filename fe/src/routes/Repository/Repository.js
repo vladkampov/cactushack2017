@@ -17,17 +17,16 @@ class Repository extends Component {
 
 	// eslint-disable-next-line
 	renderNotes(abc_string) {
-		const tunebook = new window.ABCJS.TuneBook(abc_string);
-		const tuneObjectArray = window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
-		const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
+		// const tunebook = new window.ABCJS.TuneBook(abc_string);
+		window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
+		// const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
 	}
 
 	// eslint-disable-next-line
 	handleDrop = (acceptedFiles, rejectedFiles) => {
-		console.log(acceptedFiles, rejectedFiles);
     const formData = new FormData();
     formData.append('file', acceptedFiles[0]);
-    formData.append('repository', this.props.params.repository)
+    formData.append('repository', this.props.params.repository);
 		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository);
 	}
 
@@ -37,14 +36,14 @@ class Repository extends Component {
 					<Dropzone onDrop={this.handleDrop}>
 						{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
 					    if (isDragActive) {
-					      return "This file is authorized";
+					      return 'This file is authorized';
 					    }
 					    if (isDragReject) {
-					      return "This file is not authorized";
+					      return 'This file is not authorized';
 					    }
 					    return acceptedFiles.length || rejectedFiles.length
 					      ? `Accepted ${acceptedFiles.length}, rejected ${rejectedFiles.length} files`
-					      : "Try dropping some files.";
+					      : 'Try dropping some files.';
 					  }}
 					</Dropzone>
 				<div className="container">

@@ -18,11 +18,9 @@ export class RepositoriesStore {
 		});
 	}
 
+	// eslint-disable-next-line
 	@action uploadFile(file, repository) {
-		uploadFile(file, repository).then(data => {
-			console.log(data, this)
-			return data;
-		});
+		uploadFile(file, repository).then(data => data);
 	}
 }
 

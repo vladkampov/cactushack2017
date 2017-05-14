@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { IndexLink, browserHistory } from 'react-router';
 import { NavItem } from '../';
-import { uuid } from '../../utils';
-import { CORE_CONNECT_DOMAIN } from '../../api/config';
 import './Header.scss';
 
 /* eslint-disable jsx-a11y/href-no-hash */
@@ -10,7 +8,7 @@ export default class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       access_token: localStorage.getItem('access_token')
     };
   }
@@ -19,7 +17,7 @@ export default class Header extends Component {
     e.preventDefault();
     localStorage.removeItem('access_token');
     browserHistory.push('/');
-    window.location.replace('//localhost')
+    window.location.replace('//localhost');
   }
 
   render() {

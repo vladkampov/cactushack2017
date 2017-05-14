@@ -3,9 +3,9 @@ import './Home.scss';
 
 class Home extends Component {
 	componentDidMount() {
-		const abc_string = '"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|';
+		const abcString = '"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|';
 
-		window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
+		window.ABCJS.renderAbc('notation', abcString, undefined, { staffwidth: 1000, scale: 1 });
 	}
 
 	render() {

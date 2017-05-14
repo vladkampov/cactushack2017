@@ -28,7 +28,7 @@ class Login extends Component {
 					      </div>
 
 					      <div className="form-group form-group-lg">
-					        <input id="password" name="password" type="password"  required className="form-control" placeholder="Password" />
+					        <input id="password" name="password" type="password" required className="form-control" placeholder="Password" />
 					      </div>
 
 					      <div className="text-right">
