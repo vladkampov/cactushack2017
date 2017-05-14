@@ -7,23 +7,6 @@ from rest_framework import serializers
 from repository.models import Repository, Commit, Track
 
 
-class RepositorySerializer(serializers.ModelSerializer):
-    owner = serializers.CharField()
-    description = serializers.CharField(required=False)
-
-    class Meta:
-        model = Repository
-        fields = ('title', 'owner', 'description')
-
-    def create(self, validated_data):
-        validated_data['owner'] = get_user_model().objects.get(username=validated_data['owner'])
-        obj = Repository.objects.create(**validated_data)
-
-        # Create empty Git repository
-        git.Repo.init(obj.path_to_repo, bare=True)
-        return obj
-
-
 class CommitSerializer(serializers.ModelSerializer):
     repository = serializers.CharField()
 
@@ -58,3 +41,23 @@ class TrackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Track
         fields = ('instrument', 'abc_score', 'repository')
+
+
+class RepositorySerializer(serializers.ModelSerializer):
+    owner = serializers.CharField()
+    description = serializers.CharField(allow_blank=True, required=False)
+    tracks = TrackSerializer(many=True, read_only=True)
+    commits = CommitSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Repository
+        fields = ('title', 'owner', 'description', 'tracks', 'commits')
+
+    def create(self, validated_data):
+        print(validated_data)
+        validated_data['owner'] = get_user_model().objects.get(username=validated_data['owner'])
+        obj = Repository.objects.create(**validated_data)
+
+        # Create empty Git repository
+        git.Repo.init(obj.path_to_repo, bare=True)
+        return obj

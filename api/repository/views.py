@@ -52,6 +52,7 @@ class TrackViewSet(viewsets.ModelViewSet):
         extension = os.path.splitext(file._get_name())[-1]
         if extension == "gt5":
             return gtp2abc(file)
+        return file.read()
 
     def create(self, request):
         file = request.data['file']
