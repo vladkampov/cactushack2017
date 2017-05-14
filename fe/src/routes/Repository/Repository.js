@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Dropzone from 'react-dropzone'; // eslint-disable-line
 import './Repository.scss';
 
 class Repository extends Component {
@@ -18,9 +19,27 @@ class Repository extends Component {
 		const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
 	}
 
+	// eslint-disable-next-line
+	handleDrop = (acceptedFiles, rejectedFiles) => {
+		console.log(acceptedFiles, rejectedFiles);
+	}
+
  	render() {
 		return (
 			<section className="Repository">
+					<Dropzone onDrop={this.handleDrop}>
+						{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
+					    if (isDragActive) {
+					      return "This file is authorized";
+					    }
+					    if (isDragReject) {
+					      return "This file is not authorized";
+					    }
+					    return acceptedFiles.length || rejectedFiles.length
+					      ? `Accepted ${acceptedFiles.length}, rejected ${rejectedFiles.length} files`
+					      : "Try dropping some files.";
+					  }}
+					</Dropzone>
 				<div className="container">
 					<h1>{this.props.params.repository}</h1>
 					<div className="row background Repository__panel">
