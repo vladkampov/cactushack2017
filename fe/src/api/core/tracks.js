@@ -11,7 +11,7 @@ export function uploadFile(file, repository) {
 }
 export function pushCommit(file, repository) {
 	return doFetchCall(`${CORE_END_POINT_URL}`, {
-		'method': 'PUT',
+		'method': 'PATCH',
 		'body': file,
 	});
 }

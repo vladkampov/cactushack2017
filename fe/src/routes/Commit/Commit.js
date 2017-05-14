@@ -20,6 +20,7 @@ export default class Commit extends Component {
 
 		const formData = this.state.formData;
 		formData.append('message', e.target.message.value);
+		formData.append('update', true);
 
 		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository).then(data => {
 			window.location.reload();
