@@ -4,6 +4,7 @@ import { uploadFile } from '../api/core/tracks';
 
 export class RepositoriesStore {
 	@observable repositories = [];
+	@observable commitHistory = [];
 
 	@action getRepositories(username) {
 		getRepositories(username).then(data => {
