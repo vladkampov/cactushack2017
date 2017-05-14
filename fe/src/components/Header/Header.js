@@ -34,7 +34,7 @@ export default class Header extends Component {
 
               {this.props.token ? (
                 <ul className="nav navbar-nav">
-                  <NavItem to="/user/lalka">username</NavItem>
+                  <NavItem to={`/user/${this.props.username}`}>{this.props.username}</NavItem>
                   <li>
                     <a href="" onClick={this.handleLogout}><i className="fa fa-sign-out" aria-hidden="true" /></a>
                   </li>
