@@ -23,9 +23,8 @@ export default class Commit extends Component {
 		formData.append('update', true);
 
 		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository).then(data => {
-			window.location.reload();
-		});
-	}
+			browserHistory.push(`user/${this.props.params.username}/${this.props.params.repository}`);
+	}) };
 
 	// eslint-disable-next-line
 	handleDrop = (acceptedFiles, rejectedFiles) => {

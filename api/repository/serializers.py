@@ -12,7 +12,7 @@ class CommitSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Commit
-        fields = ('commiter', 'message', 'repository', 'time')
+        fields = ('commiter', 'message', 'repository', 'time', 'hash')
 
     def create(self, validated_data):
         repository = Repository.objects.get(title=validated_data['repository'],

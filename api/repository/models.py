@@ -72,7 +72,7 @@ class Commit(models.Model):
     commiter = models.CharField(max_length=100)
 
     def __str__(self):
-        return "%s - %s" % (self.description, self.track.title)
+        return "{} - {}".format(self.repository.title, self.hash)
 
 
 class Comment(models.Model):
