@@ -24,6 +24,8 @@ import repository.views
 router = routers.DefaultRouter()
 router.register(r'repositories', repository.views.RepositoryViewSet, base_name="repository")
 router.register(r'commits', repository.views.CommitViewSet, base_name="commit")
+router.register(r'tracks', repository.views.TrackViewSet, base_name="track")
+
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -31,7 +33,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
 
     url(r'^', include('rest_auth.urls')),
-    url(r'^register', accounts.views.RegisterView.as_view()),
+    url(r'^register/', accounts.views.RegisterView.as_view()),
 
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
