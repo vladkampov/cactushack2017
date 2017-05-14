@@ -161,22 +161,18 @@ class RepositoryDiffView(APIView):
         before, after = diff.split('-b')[-1].split('+b')
         before = before.split('/n')
         after = after.split('/n')
-        print(before)
-        print(after)
-        import ipdb; ipdb.set_trace()
-        return
 
-        for key, value in before.items():
-            result['before'][key] = {}
-            result['before'][key]['source'] = before[key]
-            diffs = set(before[key].split('|')) - set(after[key].split('|'))
-            diffs_indexes = [before[key].split('|').index(item) for item in diffs]
-            result['before'][key]['difference'] = diffs_indexes
+        old_diffs = set(before.split('|')) - set(after.split('|'))
+        new_diffs = set(after.split('|')) - set(before.split('|'))
+        result = {
+            'sources': {
+                'before': git_repo.git.show('{}:{}'.format(old_commit_hash, "Track")),
+                'after': git_repo.git.show('{}:{}'.format(new_commit_hash, "Track")),
+            },
+            'changes': {
+                'before': [before.split('|').index(item) for item in old_diffs],
+                'after': [after.split('|').index(item) for item in new_diffs],
+            }
+        }
 
-        for key, value in after.items():
-            result['after'][key] = {}
-            result['after'][key]['source'] = after[key]
-            diffs = set(after[key].split('|')) - set(before[key].split('|'))
-            diffs_indexes = [after[key].split('|').index(item) for item in diffs]
-            result['after'][key]['difference'] = diffs_indexes
-        return result
+        return Response(result)
