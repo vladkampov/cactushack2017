@@ -65,7 +65,6 @@ class TrackViewSet(viewsets.ModelViewSet):
         return {'Track': file.read()}
 
     def create(self, request):
-        print(request.data)
         update = request.data.get('update')
         file = request.data['file']
         tracks = self.convert(file)
@@ -79,7 +78,9 @@ class TrackViewSet(viewsets.ModelViewSet):
             files_list.append(file_path)
 
             with open(file_path, "w") as text_file:
-                print(score.decode(), file=text_file)
+                if isinstance(score, bytes):
+                    score = score.decode()
+                print(score, file=text_file)
 
             if not update:
                 created_tracks.append(Track.objects.create(title=track_title, repository=repository))
@@ -115,43 +116,87 @@ class RepositoryDiffView(APIView):
 
         git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
 
+        old_source = git_repo.git.show('{}:{}'.format(old_commit_hash, "Track"))
+        new_source = git_repo.git.show('{}:{}'.format(new_commit_hash, "Track"))
         result = {
             'sources': {
-                'before': git_repo.git.show('{}:{}'.format(old_commit_hash, "Track")),
-                'after': git_repo.git.show('{}:{}'.format(new_commit_hash, "Track")),
+                'before': old_source,
+                'after': new_source,
             }
         }
 
-        new_commit = git_repo.commit(new_commit_hash)
-        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode().split('\n')
-        # I'm sorry
-        diffs = {
-            'before': [],
-            'after': []
-        }
+        # #new_commit = git_repo.commit(new_commit_hash)
+        # #diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
+        # # I'm sorry
+        # diffs = {
+        #     'before': [],
+        #     'after': []
+        # }
 
-        for i, line in enumerate(diff):
-            if line.startswith('-')and i < len(diff) and diff[i+1].startswith('+'):
-                    # Cut +-
-                    next_line = diff[i+1][1:]
-                    line = line[1:]
+        # new_source = new_source.split('|')
+        # old_source = old_source.split('|')
+        # for i in len(new_source):
+        #     if new_source[i] != old_source[i]:
+        #         new_chords = new_source[i].split(" ")
+        #         old_chords = old_source[i].split(" ")
+        #         for j in len(new_source):
+        #             if new_chords[j] != new_chords[j]:
 
-                    line_diffs = set(line.split(' ')) - set(next_line.split(' '))
-                    next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
 
-                    diffs['before'] = [(i, line.split(' ').index(item)) for item in line_diffs]
-                    diffs['after'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
+        # measures = {}
+        # cur_measure = 0
+        # buf = ""
+        # sign = ""
+        # drop_sign = False
+        # for i, char in enumerate(diff):
+        #     if char in ['+', '-']:
+        #         sign = char
+        #     elif char == '\\' and diff[i+1] == "n":
+        #         drop_sign = True
+        #     elif char == '|':
+        #         measures[cur_measure] = (sign, buf)
+        #         if drop_sign:
+        #             sign = ""
+        #         cur_measure += 1
+        #         buf = ""
+        #     else:
+        #         buf += char
 
-            elif line.startswith('+') and i < len(diff) and next_line.startswith('-'):
-                    # Cut +-
-                    next_line = diff[i+1][1:]
-                    line = line[1:]
+        # print(diff)
+        # print(measures)
+        # for i, measure in measures.items():
+        #     if measure[0] == '-' and i < len(measures) and measures[i+1][0] == '+':
+        #         next_line = measures[i+1][1]
+        #         line = measure[1]
 
-                    line_diffs = set(line.split(' ')) - set(next_line.split(' '))
-                    next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
+        #         line_diffs = set(line.split(' ')) - set(next_line.split(' '))
+        #         next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
 
-                    diffs['after'] = [(i, line.split(' ').index(item)) for item in line]
-                    diffs['before'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
-        result['diffs'] = diffs
+        #         diffs['before'] = [(i, line.split(' ').index(item)) for item in line_diffs]
+        #         diffs['after'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
+
+        # for i, line in enumerate(diff):
+        #     if line.startswith('-') and i < len(diff) and diff[i+1].startswith('+'):
+        #             # Cut +-
+        #             next_line = diff[i+1][1:]
+        #             line = line[1:]
+
+        #             line_diffs = set(line.split(' ')) - set(next_line.split(' '))
+        #             next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
+
+        #             diffs['before'] = [(i, line.split(' ').index(item)) for item in line_diffs]
+        #             diffs['after'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
+
+            # elif line.startswith('+') and i < len(diff) and next_line.startswith('-'):
+            #         # Cut +-
+            #         next_line = diff[i+1][1:]
+            #         line = line[1:]
+
+            #         line_diffs = set(line.split(' ')) - set(next_line.split(' '))
+            #         next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
+
+            #         diffs['after'] = [(i, line.split(' ').index(item)) for item in line]
+            #         diffs['before'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
+        # result['diffs'] = diffs
 
         return Response(result)
