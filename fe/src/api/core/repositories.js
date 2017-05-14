@@ -7,9 +7,14 @@ export function getRepositories(owner) {
 	return doFetchCall(owner ? `${CORE_END_POINT_URL}?owner=${owner}` : CORE_END_POINT_URL);
 }
 
+export function getRepository(owner, repository) {
+	return doFetchCall(owner ? `${CORE_END_POINT_URL}?owner=${owner}&title=${repository}` : CORE_END_POINT_URL);
+}
+
 export function createRepository(owner, title, description) {
 	return doFetchCall(CORE_END_POINT_URL, {
 		method: 'POST',
+		'Content-Type': 'application/json',
 		body: JSON.stringify({
 			owner,
 			title,

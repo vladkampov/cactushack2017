@@ -24,7 +24,7 @@ class Login extends Component {
 					    </div>
 					    <form onSubmit={this.handleSubmit} acceptCharset="UTF-8" role="form" data-toggle="validator" method="post" className="background" noValidate="true">
 					      <div className="form-group form-group-lg">
-					        <input id="name" name="name" type="text" required autoFocus className="form-control" placeholder="Email Address" />
+					        <input id="name" name="name" type="text" required autoFocus className="form-control" placeholder="Username" />
 					      </div>
 
 					      <div className="form-group form-group-lg">
@@ -32,11 +32,6 @@ class Login extends Component {
 					      </div>
 
 					      <div className="text-right">
-					        <div className="pull-left">
-					          <a className="btn btn-link" href="">
-					            Forgot Password?
-					          </a>
-					        </div>
 					        <button className="btn btn-lg btn-success" type="submit">
 					          Login
 					        </button>

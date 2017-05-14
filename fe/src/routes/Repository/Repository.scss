@@ -2,4 +2,12 @@
 	.dropzone {
 		// width: 100%;
 	}
+
+	&__panel {
+		padding: 15px 0 5px;
+		background: #e7e7e7;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		box-shadow: 0px 5px 7px -4px;
+	}
 }

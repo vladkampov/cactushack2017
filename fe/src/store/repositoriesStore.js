@@ -1,10 +1,11 @@
 import { observable, action } from 'mobx';
-import { getRepositories, createRepository } from '../api/core/repositories';
+import { getRepositories, createRepository, getRepository } from '../api/core/repositories';
 import { uploadFile } from '../api/core/tracks';
 
 export class RepositoriesStore {
 	@observable repositories = [];
 	@observable commitHistory = [];
+	@observable currentRepository = null;
 
 	@action getRepositories(username) {
 		getRepositories(username).then(data => {
@@ -23,5 +24,11 @@ export class RepositoriesStore {
 	@action uploadFile(file, repository) {
 		uploadFile(file, repository).then(data => data);
 	}
-}
 
+	@action getRepository(owner, title) {
+		return getRepository(owner, title).then(data => {
+			this.currentRepository = data;
+			return data;
+		});
+	}
+}
