@@ -11,8 +11,9 @@ export class RepositoriesStore {
 	}
 
 	@action createRepository(username, title, description) {
-		createRepository(username, title, description).then(data => {
+		return createRepository(username, title, description).then(data => {
 			this.repositories.push(data);
+			return data;
 		});
 	}
 }

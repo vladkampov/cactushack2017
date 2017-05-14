@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
+import { browserHistory } from 'react-router';
 
 @inject('repositoriesStore')
 @observer
@@ -7,7 +8,9 @@ export default class CreateRepository extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 
-		this.props.repositoriesStore.createRepository(this.props.params.username, e.target.title.value, e.target.description.value);
+		this.props.repositoriesStore.createRepository(this.props.params.username, e.target.title.value, e.target.description.value).then(data => {
+			browserHistory.push(`/user/${this.props.params.username}/${data.title}`);
+		});
 	}
 
 	render() {
