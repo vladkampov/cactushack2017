@@ -40,7 +40,7 @@ class TrackSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Track
-        fields = ('instrument', 'abc_score', 'repository')
+        fields = ('title', 'abc_score', 'repository')
 
 
 class RepositorySerializer(serializers.ModelSerializer):
@@ -54,10 +54,9 @@ class RepositorySerializer(serializers.ModelSerializer):
         fields = ('title', 'owner', 'description', 'tracks', 'commits')
 
     def create(self, validated_data):
-        print(validated_data)
         validated_data['owner'] = get_user_model().objects.get(username=validated_data['owner'])
         obj = Repository.objects.create(**validated_data)
 
         # Create empty Git repository
-        git.Repo.init(obj.path_to_repo, bare=True)
+        git.Repo.init(obj.path_to_repo)
         return obj

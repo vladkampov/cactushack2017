@@ -1,10 +1,12 @@
 import os
 
 import git
+from rest_framework import viewsets
+from rest_framework.parsers import MultiPartParser, FormParser
+
 from repository.converters.gtp2abc import convert as gtp2abc
 from repository.models import Repository, Commit, Track
 from repository.serializers import RepositorySerializer, CommitSerializer, TrackSerializer
-from rest_framework import viewsets
 
 
 class RepositoryViewSet(viewsets.ModelViewSet):
@@ -39,6 +41,7 @@ class CommitViewSet(viewsets.ModelViewSet):
 
 class TrackViewSet(viewsets.ModelViewSet):
     serializer_class = TrackSerializer
+    parser_classes = (MultiPartParser, FormParser,)
 
     def get_queryset(self):
         queryset = Track.objects.all()
@@ -52,7 +55,7 @@ class TrackViewSet(viewsets.ModelViewSet):
         extension = os.path.splitext(file._get_name())[-1]
         if extension == "gt5":
             return gtp2abc(file)
-        return file.read()
+        return {'Track': file.read()}
 
     def create(self, request):
         file = request.data['file']
@@ -68,20 +71,21 @@ class TrackViewSet(viewsets.ModelViewSet):
             with open(file_path, "w") as text_file:
                 print(score, file=text_file)
 
-            Track.objects.create(title=track_title)
+            Track.objects.create(title=track_title, repository=repository)
 
         # Add files to commit
         index = repository.git_repository.index
         index.add(files_list)
         author = git.Actor(repository.owner.username, "test@test.com")
-        committer = git.Actor(request.user.username, "test@test.com")
+        commiter = git.Actor(request.user.username, "test@test.com")
         commit_message = "Added tracks: {}".format(tracks.keys())
         commit = index.commit(message=commit_message,
                               author=author,
-                              committer=committer)
+                              committer=commiter)
 
         # Create Commit object
         Commit.objects.create(message=commit_message,
-                              committer=request.user.username,
+                              commiter=request.user.username,
                               repository=repository,
                               hash=commit.hexsha)
+        return Track.objects.last()

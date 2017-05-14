@@ -7,9 +7,6 @@ export function uploadFile(file, repository) {
 	return doFetchCall(`${CORE_END_POINT_URL}`, {
 		'method': 'POST',
 		'body': file,
-		headers: {
-			'Content-Type': 'multipart/form-data'
-		},
 	});
 }
 
