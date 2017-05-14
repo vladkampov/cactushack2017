@@ -26,7 +26,7 @@ class Account extends Component {
 							</div>
 						</div>
 						<div className="col-md-9">
-							<h2>Your repositories <span className="badge">{`${this.props.repositoriesStore.repositories.length}`}</span>
+							<h2>Your tracks <span className="badge">{`${this.props.repositoriesStore.repositories.length}`}</span>
 								<Link to={`/user/${this.props.params.username}/create`} className="btn btn-success pull-right">New track</Link>
 							</h2>
 							<div className="row">
@@ -43,20 +43,6 @@ class Account extends Component {
 								)}
 							</div>
 						</div>
-					</div>
-					<h2>Changes history</h2>
-					<div className="row">
-						{this.props.repositoriesStore.commitHistory.length ? this.props.repositoriesStore.commitHistory.map(data => (
-								<div className="col-md-12">
-									<div className="">
-										<h4><Link to={`/user/${this.props.params.username}/${data.title}`}>{data.title}</Link></h4>
-										<p><i className="fa fa-info" aria-hidden="true" /> {data.description}</p>
-										{data.last_update ? (<p><small><i className="fa fa-clock-o" aria-hidden="true" /> {getPreetyDate(new Date(data.last_update))}</small></p>) : ''}
-									</div>
-								</div>
-							)) : (
-								<p className="col-md-12">{'You have not make changes so far. Should you create one?'}</p>
-						)}
 					</div>
 				</div>
 			</section>

@@ -7,6 +7,7 @@ export class RepositoriesStore {
 	@observable repositories = [];
 	@observable commitHistory = [];
 	@observable currentRepository = { commits: [], tracks: [] };
+	@observable currentDiff = { sources: {}, diffs: { after: [], before: [] }};
 
 	@action getRepositories(username) {
 		getRepositories(username).then(data => {
@@ -41,7 +42,8 @@ export class RepositoriesStore {
 	// eslint-disable-next-line
 	@action getDiff(oldDiff, newDiff) {
 		return getDiff(oldDiff, newDiff).then(data => {
-			console.log(data);
+			this.currentDiff = data;
+			return data;
 		})
 	}
 }

@@ -36,8 +36,9 @@ class Repository extends Component {
 	renderNotes(abc_string) {
 		// const tunebook = new window.ABCJS.TuneBook(abc_string);
 		window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
-		// window.ABCJS.renderMidi('midi', abc_string, undefined)
-		// const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
+		window.ABCJS.renderMidi('midi', abc_string, {}, { generateDownload: true, downloadLabel: '<i className="fa fa-download" aria-hidden="true"></i> Download MIDI file'}, {});
+		// $('.edit').after('<a href="' + $('#midi a').attr('href') + '" download="' + $('.song-title').html() + '.mid" class="btn btn-success"><i class="fa fa-cloud-download" aria-hidden="true"></i> Download MIDI</a>')
+		
 	}
 
 	// eslint-disable-next-line
@@ -82,12 +83,13 @@ class Repository extends Component {
 									<p><i className="fa fa-user-o" aria-hidden="true" /> <Link to="/">Collaborators</Link></p>
 								</div>
 								<div className="col-md-3 text-right">
-									<p><i className="fa fa-download" aria-hidden="true" /> <Link to="/">Download MIDI file</Link></p>
+									<div id="midi" />
 								</div>
 							</div>
 							<div className="Repository__view">
-								<div id="notation" />
-								<div id="midi" />
+								<p>
+									<div id="notation" />
+								</p>
 							</div>
 						</div>
 					) : (
@@ -113,5 +115,6 @@ class Repository extends Component {
 		);
 	}
 }
+// <p><i className="fa fa-download" aria-hidden="true" /> <Link to="/">Download MIDI file</Link></p>
 
 export default Repository;
