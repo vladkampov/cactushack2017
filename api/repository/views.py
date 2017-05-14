@@ -154,23 +154,38 @@ class RepositoryDiffView(APIView):
         old_commit_hash = request.query_params['old_commit']
         new_commit_hash = request.query_params['new_commit']
 
-        git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
-        new_commit = git_repo.commit(new_commit_hash)
-        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
-        # I'm sorry
-        before, after = diff.split('-b')[-1].split('+b')
-
-        old_diffs = set(before.split(' ')) - set(after.split(' '))
-        new_diffs = set(after.split(' ')) - set(before.split(' '))
         result = {
             'sources': {
                 'before': git_repo.git.show('{}:{}'.format(old_commit_hash, "Track")),
                 'after': git_repo.git.show('{}:{}'.format(new_commit_hash, "Track")),
-            },
-            'changes': {
-                'before': [before.split(' ').index(item) for item in old_diffs],
-                'after': [after.split(' ').index(item) for item in new_diffs],
             }
         }
+
+        git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
+        new_commit = git_repo.commit(new_commit_hash)
+        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
+        # I'm sorry
+        diffs = {
+            'before': [],
+            'after': []
+        }
+
+        for i, line in enumerate(diff):
+            if line.startswith('-'):
+                if i < len(diff) and diff[i+1].startswith('+'):
+                    line_diffs = set(line.split(' ')) - set(diff[i+1].split(' '))
+                    next_line_diffs = set(diff[i+1].split(' ')) - set(line.split(' '))
+
+                    diffs['before'] = [line.split(' ').index(item) for item in line_diffs]
+                    diffs['after'] = [diff[i+1].split(' ').index(item) for item in next_line_diffs]
+
+            elif line.startswith('+'):
+                if i < len(diff) and diff[i+1].startswith('-'):
+                    line_diffs = set(line.split(' ')) - set(diff[i+1].split(' '))
+                    next_line_diffs = set(diff[i+1].split(' ')) - set(line.split(' '))
+
+                    diffs['after'] = [line.split(' ').index(item) for item in line]
+                    diffs['before'] = [diff[i+1].split(' ').index(item) for item in next_line_diffs]
+        result['diffs'] = diffs
 
         return Response(result)
