@@ -14,7 +14,9 @@ export function getRepository(owner, repository) {
 export function createRepository(owner, title, description) {
 	return doFetchCall(CORE_END_POINT_URL, {
 		method: 'POST',
-		'Content-Type': 'application/json',
+		headers: {
+			'Content-Type': 'application/json'
+		},
 		body: JSON.stringify({
 			owner,
 			title,

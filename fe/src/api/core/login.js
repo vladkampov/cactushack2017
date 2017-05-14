@@ -5,8 +5,10 @@ const CORE_END_POINT_URL = `${CORE_API_DOMAIN}/login/`;
 
 export function logIn(username, password) {
 	return doFetchCall(CORE_END_POINT_URL, {
+		headers: {
+			'Content-Type': 'application/json'
+		},
 		method: 'POST',
-		body: JSON.stringify({ username, password }),
-		'Content-Type': 'application/json'
+		body: JSON.stringify({ username, password })
 	});
 }
