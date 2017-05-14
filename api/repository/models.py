@@ -3,8 +3,6 @@ import shutil
 
 from django.contrib.auth import get_user_model
 from django.conf import settings
-from django.core.files.storage import default_storage
-from django.core.files.base import ContentFile
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
@@ -38,16 +36,22 @@ class Repository(models.Model):
 
 @receiver(pre_delete, sender=Repository)
 def repo_delete(sender, instance, **kwargs):
+    """After deletion of object we need to delete folder with git repository.
+    """
     shutil.rmtree(instance.path_to_repo)
 
 
 class Track(models.Model):
     """Represent single track in repository.
     """
-    instrument = models.CharField(max_length=256)
-    abc_score = models.TextField()
-    tempo = models.IntegerField()
+    title = models.CharField(max_length=256)
     repository = models.ForeignKey(Repository, related_name="tracks")
+
+    @property
+    def abc_score(self):
+        file_path = os.path.join(self.repository.path_to_repo, self.title)
+        with open(file_path, "r") as file:
+            return file.read()
 
 
 class Commit(models.Model):

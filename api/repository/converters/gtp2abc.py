@@ -68,11 +68,11 @@ def add_effects(note, effects):
     return note
 
 
-def convert(file=None):
+def convert(file):
     """
     Convert Guitar Pro files to ABC notation.
     Takes GP* file instance as argument.
-    Returns dict with tracks as kays, and ABC notation as values.
+    Returns dict with tracks as keys, and ABC notation as values.
     """
     song = guitarpro.parse(file)
 

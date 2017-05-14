@@ -9,6 +9,7 @@ from repository.models import Repository, Commit, Track
 
 class RepositorySerializer(serializers.ModelSerializer):
     owner = serializers.CharField()
+    description = serializers.CharField(required=False)
 
     class Meta:
         model = Repository
@@ -34,17 +35,26 @@ class CommitSerializer(serializers.ModelSerializer):
         repository = Repository.objects.get(title=validated_data['repository'],
                                             owner__username=validated_data['commiter'])
 
-        get_repo = repository.git_repository
-        index = get_repo.index
+        git_repo = repository.git_repository
+        index = git_repo.index
         files = os.listdir(repository.path_to_repo)
         index.add(files)
 
         author = git.Actor(repository.owner.username, "test@test.com")
         committer = git.Actor(validated_data['commiter'], "test@test.com")
         # commit by commit message and author and committer
-        index.commit(validated_data['message'], author=author, committer=committer)
+        commit = index.commit(validated_data['message'], author=author, committer=committer)
 
         obj = Commit.objects.create(message=validated_data['message'],
                                     committer=validated_data['commiter'],
-                                    repository=repository)
+                                    repository=repository,
+                                    hash=commit.hexsha)
         return obj
+
+
+class TrackSerializer(serializers.ModelSerializer):
+    repository = serializers.CharField()
+
+    class Meta:
+        model = Track
+        fields = ('instrument', 'abc_score', 'repository')
