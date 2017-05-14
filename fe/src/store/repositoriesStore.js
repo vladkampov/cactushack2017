@@ -5,7 +5,7 @@ import { uploadFile } from '../api/core/tracks';
 export class RepositoriesStore {
 	@observable repositories = [];
 	@observable commitHistory = [];
-	@observable currentRepository = null;
+	@observable currentRepository = { commits: [], tracks: [] };
 
 	@action getRepositories(username) {
 		getRepositories(username).then(data => {
@@ -22,13 +22,13 @@ export class RepositoriesStore {
 
 	// eslint-disable-next-line
 	@action uploadFile(file, repository) {
-		uploadFile(file, repository).then(data => data);
+		return uploadFile(file, repository).then(data => data);
 	}
 
 	@action getRepository(owner, title) {
 		return getRepository(owner, title).then(data => {
-			this.currentRepository = data;
-			return data;
+			this.currentRepository = data.results[0];
+			return data.results[0];
 		});
 	}
 }

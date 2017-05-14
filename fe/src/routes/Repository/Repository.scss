@@ -10,4 +10,11 @@
 		border-bottom-right-radius: 10px;
 		box-shadow: 0px 5px 7px -4px;
 	}
+
+	.drop > div {
+		margin: auto;
+    height: 50px !important;
+    padding: 35px 0 55px;
+    width: 100% !important;
+	}
 }

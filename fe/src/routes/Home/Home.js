@@ -14,7 +14,7 @@ class Home extends Component {
 				<div className="container">
 					<img src="/bender.png" width="150" alt="" />
 					<h1>Make music in a proper way <br />
-					<small>any text should be here</small></h1>
+					<small>Collaborate your ideas.</small></h1>
 
 					<div id="notation" />
 				</div>

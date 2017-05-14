@@ -31,11 +31,11 @@ class Account extends Component {
 							<div className="row">
 								{this.props.repositoriesStore.repositories.length ? this.props.repositoriesStore.repositories.map(data => {
 									return (
-										<div className="col-md-4">
+										<div className="col-md-4" key={data.title}>
 											<div className="card">
 												<h4><Link to={`/user/${this.props.params.username}/${data.title}`}>{data.title}</Link></h4>
 												<p><i className="fa fa-info" aria-hidden="true" /> {data.description}</p>
-												{data.lastUpdate ? (<p><i className="fa fa-clock-o" aria-hidden="true" /><small>{data.lastUpdate}</small></p>) : ''}
+												{data.last_update ? (<p><i className="fa fa-clock-o" aria-hidden="true" /><small>{data.last_update}</small></p>) : ''}
 											</div>
 										</div>
 									)
@@ -53,7 +53,7 @@ class Account extends Component {
 									<div className="">
 										<h4><Link to={`/user/${this.props.params.username}/${data.title}`}>{data.title}</Link></h4>
 										<p><i className="fa fa-info" aria-hidden="true" /> {data.description}</p>
-										{data.lastUpdate ? (<p><i className="fa fa-clock-o" aria-hidden="true" /><small>{data.lastUpdate}</small></p>) : ''}
+										{data.last_update ? (<p><i className="fa fa-clock-o" aria-hidden="true" /><small>{data.last_update}</small></p>) : ''}
 									</div>
 								</div>
 							)

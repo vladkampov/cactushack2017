@@ -8,12 +8,27 @@ import './Repository.scss';
 @observer
 class Repository extends Component {
 	static defaultProps = { params: {} };
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			track: ''
+		};
+	}
 
 	componentDidMount() {
 		this.props.repositoriesStore.getRepository(this.props.params.username, this.props.params.repository).then(data => {
-			const cooleys = 'X:1\nT: Cooley\'s\nM: 4/4\nL: 1/8\nR: reel\nK: Emin\nD2|:"Em"EB{c}BA B2 EB|~B2 AB dBAG|"D"FDAD BDAD|FDAD dAFD|\n"Em"EBBA B2 EB|B2 AB defg|"D"afe^c dBAF|1"Em"DEFD E2 D2:|2"Em"DEFD E2 gf||\n|:"Em"eB B2 efge|eB B2 gedB|"D"A2 FA DAFA|A2 FA defg|\n"Em"eB B2 eBgB|eB B2 defg|"D"afe^c dBAF|1"Em"DEFD E2 gf:|2"Em"DEFD E4|]\n';
-			console.log(data);
-			this.renderNotes(cooleys);
+			this.renderNotes(data.track ? data.track[0].title.abc_score : undefined);
+			this.setState({track: data.tracks ? data.tracks[0].title : undefined});
+		});
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		this.props.repositoriesStore.currentRepository.tracks.forEach(track => {
+			console.log(track.title, this.state)
+			if (track.title === this.state.track) {
+				this.renderNotes(track.abc_score);
+			}
 		});
 	}
 
@@ -29,44 +44,68 @@ class Repository extends Component {
     const formData = new FormData();
     formData.append('file', acceptedFiles[0]);
     formData.append('repository', this.props.params.repository);
-		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository);
+		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository).then(data => {
+			window.location.reload();
+		});
+	}
+
+	handleChange = e => {
+		this.setState({track: e.target.value})
 	}
 
  	render() {
+ 		const { currentRepository } = this.props.repositoriesStore;
+
 		return (
 			<section className="Repository">
-					<Dropzone onDrop={this.handleDrop}>
-						{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
-					    if (isDragActive) {
-					      return 'This file is authorized';
-					    }
-					    if (isDragReject) {
-					      return 'This file is not authorized';
-					    }
-					    return acceptedFiles.length || rejectedFiles.length
-					      ? `Accepted ${acceptedFiles.length}, rejected ${rejectedFiles.length} files`
-					      : 'Try dropping some files.';
-					  }}
-					</Dropzone>
 				<div className="container">
-					<h1>{this.props.params.repository}</h1>
-					<div className="row Repository__panel">
-						<div className="col-md-3">
-							<p><Link to="/">15 commits</Link></p>
+					<h1><Link to={`/user/${this.props.params.username}`}>{this.props.params.username}</Link> <small><i className="fa fa-arrow-circle-o-right" aria-hidden="true" /></small> {this.props.params.repository}
+							<Link to="" className="btn btn-success pull-right">Make changes</Link>
+					</h1>
+					{currentRepository.commits.length ? (
+						<div>
+							<div className="row Repository__panel">
+								<div className="col-md-3">
+									<div className="form-group">
+										<select className="form-control" value={this.state.track} onChange={this.handleChange}>
+											{currentRepository.tracks.map(data => (
+												<option key={data.title} value={data.title}>{data.title}</option>
+											))}
+										</select>
+									</div>
+								</div>
+								<div className="col-md-3">
+									<p><Link to="/">{currentRepository.commits.length} commit(s)</Link></p>
+								</div>
+								<div className="col-md-3">
+									<p><Link to="/">Collaborators</Link></p>
+								</div>
+								<div className="col-md-3 text-right">
+									<p><Link to="/">Download MIDI file</Link></p>
+								</div>
+							</div>
+							<div className="Repository__view">
+								<div id="notation" />
+							</div>
 						</div>
-						<div className="col-md-3">
-							<p><Link to="/">Collaborators</Link></p>
+					) : (
+						<div className="drop text-center">
+							<p>Oh Uh! Your repository is empty so far. <br />Upload your <b>ABC/GTP/MIDI</b> file to make first commit.</p>
+							<Dropzone onDrop={this.handleDrop}>
+								{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
+							    if (isDragActive) {
+							      return 'MAKE IT HARDER!';
+							    }
+							    if (isDragReject) {
+							      return 'This file is not authorized';
+							    }
+							    return acceptedFiles.length || rejectedFiles.length
+							      ? `Okay, sending your file`
+							      : 'Drop me file';
+							  }}
+							</Dropzone>
 						</div>
-						<div className="col-md-3">
-							<p><Link to="/">Download</Link></p>
-						</div>
-						<div className="col-md-3">
-							<p><Link to="/">Commit</Link></p>
-						</div>
-					</div>
-					<div className="Repository__view">
-						<div id="notation" />
-					</div>
+					)}
 				</div>
 			</section>
 		);
