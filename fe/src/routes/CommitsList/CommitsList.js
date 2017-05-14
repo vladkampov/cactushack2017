@@ -24,7 +24,7 @@ class CommitsList extends Component {
 						console.log(commit);
 
 						return (
-							<div className="row">
+							<div className="row" key={commit.time}>
 								<p className="col-md-3"><i className="fa fa-clock-o" aria-hidden="true" /> {getPreetyDate(new Date(commit.time))}</p>
 								<p className="col-md-5"><i className="fa fa-commenting-o" aria-hidden="true" /> {commit.message}</p>
 								<p className="col-md-2"><i className="fa fa-user" aria-hidden="true" /> <Link to={`/user/${commit.commiter}`}>{commit.commiter}</Link></p>

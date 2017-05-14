@@ -19,13 +19,13 @@ class Repository extends Component {
 	componentDidMount() {
 		this.props.repositoriesStore.getRepository(this.props.params.username, this.props.params.repository).then(data => {
 			this.renderNotes(data.track ? data.track[0].title.abc_score : undefined);
-			this.setState({track: data.tracks ? data.tracks[0].title : undefined});
+			this.setState({ track: data.tracks ? data.tracks[0].title : undefined });
 		});
 	}
 
 	componentDidUpdate(prevProps, prevState) {
 		this.props.repositoriesStore.currentRepository.tracks.forEach(track => {
-			console.log(track.title, this.state)
+			console.log(track.title, this.state);
 			if (track.title === this.state.track) {
 				this.renderNotes(track.abc_score);
 			}
@@ -36,6 +36,7 @@ class Repository extends Component {
 	renderNotes(abc_string) {
 		// const tunebook = new window.ABCJS.TuneBook(abc_string);
 		window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
+		window.ABCJS.renderMidi('midi', abc_string, undefined)
 		// const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
 	}
 
@@ -50,7 +51,7 @@ class Repository extends Component {
 	}
 
 	handleChange = e => {
-		this.setState({track: e.target.value})
+		this.setState({ track: e.target.value });
 	}
 
  	render() {
@@ -75,17 +76,18 @@ class Repository extends Component {
 									</div>
 								</div>
 								<div className="col-md-3">
-									<p><Link to={`/user/${currentRepository.owner}/${currentRepository.title}/changes`}>{currentRepository.commits.length} change(s)</Link></p>
+									<p><i className="fa fa-plus-square-o" aria-hidden="true" /> <Link to={`/user/${currentRepository.owner}/${currentRepository.title}/changes`}>{currentRepository.commits.length} change(s)</Link></p>
 								</div>
 								<div className="col-md-3">
-									<p><Link to="/">Collaborators</Link></p>
+									<p><i className="fa fa-user-o" aria-hidden="true" /> <Link to="/">Collaborators</Link></p>
 								</div>
 								<div className="col-md-3 text-right">
-									<p><Link to="/">Download MIDI file</Link></p>
+									<p><i className="fa fa-download" aria-hidden="true" /> <Link to="/">Download MIDI file</Link></p>
 								</div>
 							</div>
 							<div className="Repository__view">
 								<div id="notation" />
+								<div id="midi" />
 							</div>
 						</div>
 					) : (

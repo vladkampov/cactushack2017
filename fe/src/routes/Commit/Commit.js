@@ -12,7 +12,7 @@ export default class Commit extends Component {
 
 		this.state = {
 			formData: null
-		}
+		};
 	}
 
 	handleSubmit = e => {
@@ -24,7 +24,8 @@ export default class Commit extends Component {
 
 		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository).then(data => {
 			browserHistory.push(`user/${this.props.params.username}/${this.props.params.repository}`);
-	}) };
+	});
+};
 
 	// eslint-disable-next-line
 	handleDrop = (acceptedFiles, rejectedFiles) => {
