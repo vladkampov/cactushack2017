@@ -50,15 +50,20 @@ class TrackViewSet(viewsets.ModelViewSet):
 
         if repository is not None:
             queryset = queryset.filter(repository__title=repository)
+
+        username = self.request.query_params.get('username', None)
+
+        if username is not None:
+            queryset = queryset.filter(username__title=username)
         return queryset
 
     def convert(self, file):
         extension = os.path.splitext(file._get_name())[-1]
-        if extension == "gt5":
+        if extension == ".gp5":
             return gtp2abc(file)
         return {'Track': file.read()}
 
-    def create(self, request):
+    def create_or_update(self, request, create=True):
         file = request.data['file']
         tracks = self.convert(file)
         repository = Repository.objects.get(title=request.data['repository'],
@@ -73,7 +78,8 @@ class TrackViewSet(viewsets.ModelViewSet):
             with open(file_path, "w") as text_file:
                 print(score, file=text_file)
 
-            created_tracks.append(Track.objects.create(title=track_title, repository=repository))
+            if create:
+                created_tracks.append(Track.objects.create(title=track_title, repository=repository))
 
         # Add files to commit
         index = repository.git_repository.index
@@ -90,5 +96,16 @@ class TrackViewSet(viewsets.ModelViewSet):
                               commiter=request.user.username,
                               repository=repository,
                               hash=commit.hexsha)
+        return created_tracks
+
+    def create(self, request):
+        created_tracks = self.create_or_update(request)
         serializer = self.get_serializer(created_tracks, many=True)
+        return Response(serializer.data)
+
+    def update(self, request, pk=None):
+        self.create_or_update(request)
+        tracks = Track.objects.filter(repository__owner=request.user,
+                                      repository__title=request.data['repository'])
+        serializer = self.get_serializer(list(tracks), many=True)
         return Response(serializer.data)

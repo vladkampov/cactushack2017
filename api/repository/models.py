@@ -23,7 +23,8 @@ class Repository(models.Model):
         unique_together = ('owner', 'title')
 
     def __str__(self):
-        return "%s - %s" % (self.owner.username, self.title)
+        # return "%s - %s" % (self.owner.username, self.title)
+        return self.title
 
     @property
     def path_to_repo(self):
@@ -32,6 +33,12 @@ class Repository(models.Model):
     @property
     def git_repository(self):
         return git.Repo(self.path_to_repo)
+
+    @property
+    def last_update(self):
+        if self.commits.exists():
+            return self.commits.sort("-time").last().time
+        return None
 
 
 @receiver(pre_delete, sender=Repository)
@@ -46,6 +53,9 @@ class Track(models.Model):
     """
     title = models.CharField(max_length=256)
     repository = models.ForeignKey(Repository, related_name="tracks")
+
+    class Meta:
+        unique_together = ('repository', 'title')
 
     @property
     def abc_score(self):
