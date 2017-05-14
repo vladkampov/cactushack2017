@@ -55,8 +55,8 @@ export function parseJSON(response) {
  */
 export function doFetchCall(url, parameters = {}) {
 	const fetchParameters = Object.assign({}, fetchDefaults, parameters);
-
-	Object.assign(fetchParameters.headers, { Authorization: `Bearer ${localStorage.getItem('access_token')}` });
+	const auth = localStorage.getItem('access_token') ? { 'Authentification': `Token ${localStorage.getItem('access_token')}`} : {};
+	Object.assign(fetchParameters.headers, { 'Content-Type': 'application/json' }, auth);
 
 	return fetch(url, fetchParameters)
 		.then(checkStatus)

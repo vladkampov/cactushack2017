@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { observer, inject } from 'mobx-react';
 import { Link } from 'react-router';
 import './Account.scss';
 
+@inject('repositoriesStore')
+@observer
 class Account extends Component {
 	static defaultProps = { params: {} };
 

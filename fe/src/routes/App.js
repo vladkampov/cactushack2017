@@ -12,7 +12,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<div className="App__container">
-					<Header uiStore={uiStore} />
+					<Header token={uiStore.access_token} />
 					{children}
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 import { observer, inject } from 'mobx-react';
 
 @inject('uiStore')
@@ -7,11 +8,12 @@ class Login extends Component {
 	handleSubmit = e => {
 		e.preventDefault();
 
-		this.props.uiStore.logIn(e.target.name.value, e.target.password.value);
+		this.props.uiStore.logIn(e.target.name.value, e.target.password.value).then(() => {
+			browserHistory.push('/');
+		});
 	}
 
 	render() {
-		console.log(this.props.uiStore.logIn)
 		return (
 			<section className="Login">
 				<div className="container">

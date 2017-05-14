@@ -3,8 +3,8 @@ import { doFetchCall } from '../../utils';
 
 const CORE_END_POINT_URL = `${CORE_API_DOMAIN}/repositories/`;
 
-export function getRepositories(username, password) {
+export function getRepositories(owner) {
 	return doFetchCall(CORE_END_POINT_URL, {
-		body: JSON.stringify({ username })
+		body: JSON.stringify({ owner })
 	});
 }

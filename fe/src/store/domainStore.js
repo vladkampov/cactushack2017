@@ -1,5 +1,7 @@
+import { RepositoriesStore } from './repositoriesStore';
+
 export default class DomainStore {
 	constructor() {
-		this.hotelsStore = {}
+		this.repositoriesStore = new RepositoriesStore();
 	}
 }
