@@ -75,7 +75,7 @@ class Repository extends Component {
 									</div>
 								</div>
 								<div className="col-md-3">
-									<p><Link to="/">{currentRepository.commits.length} change(s)</Link></p>
+									<p><Link to={`/user/${currentRepository.owner}/${currentRepository.title}/changes`}>{currentRepository.commits.length} change(s)</Link></p>
 								</div>
 								<div className="col-md-3">
 									<p><Link to="/">Collaborators</Link></p>

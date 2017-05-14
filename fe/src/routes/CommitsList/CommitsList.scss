@@ -1,0 +1,10 @@
+.CommitsList {
+	.row:nth-child(2n) {
+		background: #f7f7f7;
+		padding: 5px 20px;
+		p {
+			margin: 0;
+			padding: 5px 0;
+		}
+	}
+}
