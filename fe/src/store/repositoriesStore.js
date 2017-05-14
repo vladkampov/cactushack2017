@@ -6,7 +6,7 @@ export class RepositoriesStore {
 
 	@action getRepositories(username) {
 		getRepositories(username).then(data => {
-			console.log(data, this);
-		})
+			this.repositories = data.results;
+		});
 	}
 }
