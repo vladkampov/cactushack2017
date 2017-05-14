@@ -2,6 +2,7 @@ import os
 
 import git
 from rest_framework import viewsets
+from rest_framework.response import Response
 from rest_framework.parsers import MultiPartParser, FormParser
 
 from repository.converters.gtp2abc import convert as gtp2abc
@@ -63,6 +64,7 @@ class TrackViewSet(viewsets.ModelViewSet):
         repository = Repository.objects.get(title=request.data['repository'],
                                             owner=request.user)
         files_list = []
+        created_tracks = []
         for track_title, score in tracks.items():
             # Save file to disk
             file_path = os.path.join(repository.path_to_repo, track_title)
@@ -71,7 +73,7 @@ class TrackViewSet(viewsets.ModelViewSet):
             with open(file_path, "w") as text_file:
                 print(score, file=text_file)
 
-            Track.objects.create(title=track_title, repository=repository)
+            created_tracks.append(Track.objects.create(title=track_title, repository=repository))
 
         # Add files to commit
         index = repository.git_repository.index
@@ -88,4 +90,5 @@ class TrackViewSet(viewsets.ModelViewSet):
                               commiter=request.user.username,
                               repository=repository,
                               hash=commit.hexsha)
-        return Track.objects.last()
+        serializer = self.get_serializer(created_tracks, many=True)
+        return Response(serializer.data)
