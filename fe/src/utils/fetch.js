@@ -57,7 +57,7 @@ export function doFetchCall(url, parameters = {}) {
 	const fetchParameters = Object.assign({}, fetchDefaults, parameters);
 	const auth = localStorage.getItem('access_token') ? { 'Authorization': `Token ${localStorage.getItem('access_token')}`} : {};
 	
-	Object.assign(fetchParameters.headers, { 'Content-Type': 'application/json' }, auth);
+	Object.assign(fetchParameters.headers, auth);
 
 	return fetch(url, fetchParameters)
 		.then(checkStatus)

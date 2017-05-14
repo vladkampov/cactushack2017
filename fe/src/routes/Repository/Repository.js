@@ -27,6 +27,7 @@ class Repository extends Component {
 		console.log(acceptedFiles, rejectedFiles);
     const formData = new FormData();
     formData.append('file', acceptedFiles[0]);
+    formData.append('repository', this.props.params.repository)
 		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository);
 	}
 
