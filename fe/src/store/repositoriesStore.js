@@ -1,5 +1,5 @@
 import { observable, action } from 'mobx';
-import { getRepositories } from '../api/core/repositories';
+import { getRepositories, createRepository } from '../api/core/repositories';
 
 export class RepositoriesStore {
 	@observable repositories = [];
@@ -9,4 +9,11 @@ export class RepositoriesStore {
 			this.repositories = data.results;
 		});
 	}
+
+	@action createRepository(username, title, description) {
+		createRepository(username, title, description).then(data => {
+			this.repositories.push(data);
+		});
+	}
 }
+

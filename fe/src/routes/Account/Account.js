@@ -25,7 +25,9 @@ class Account extends Component {
 							</div>
 						</div>
 						<div className="col-md-9">
-							<h2>Your repositories <small>({`${this.props.repositoriesStore.repositories.length}`})</small></h2>
+							<h2>Your repositories <span className="badge">{`${this.props.repositoriesStore.repositories.length}`}</span>
+								<Link to={`/user/${this.props.params.username}/create`} className="btn btn-success pull-right">New repo</Link>
+							</h2>
 						</div>
 					</div>
 					

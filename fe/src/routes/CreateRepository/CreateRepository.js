@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 
+@inject('repositoriesStore')
+@observer
 export default class CreateRepository extends Component {
+	handleSubmit = e => {
+		e.preventDefault();
+
+		this.props.repositoriesStore.createRepository(this.props.params.username, e.target.title.value, e.target.description.value);
+	}
+
 	render() {
 		return (
 			<section className="CreateRepository">
@@ -10,7 +19,7 @@ export default class CreateRepository extends Component {
 					    <div className="paragraph-lg">
 					      <h1 className="gny-title">Create repository</h1>
 					    </div>
-					    <form acceptCharset="UTF-8" role="form" data-toggle="validator" method="post" className="background" noValidate="true">
+					    <form acceptCharset="UTF-8" onSubmit={this.handleSubmit} role="form" data-toggle="validator" method="post" className="background" noValidate="true">
 					      <div className="form-group form-group-lg">
 					        <input name="title" type="text" required autoFocus className="form-control" placeholder="Title" />
 					      </div>
