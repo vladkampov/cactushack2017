@@ -30,7 +30,7 @@ class CommitViewSet(viewsets.ModelViewSet):
     serializer_class = CommitSerializer
 
     def get_queryset(self):
-        queryset = Commit.objects.all()
+        queryset = Commit.objects.all().order_by('-time')
         commiter = self.request.query_params.get('commiter', None)
         if commiter is not None:
             queryset = queryset.filter(commiter__username=commiter)
@@ -158,4 +158,25 @@ class RepositoryDiffView(APIView):
         new_commit = git_repo.commit(new_commit_hash)
         diff = new_commit.diff(old_commit_hash)
         import ipdb; ipdb.set_trace()
-        print(list(diff.iter_change_type('M'))[0])
+        # I'm sorry
+        before = json.loads(diff.patch.split('\n')[5][1:])
+        after = json.loads(diff.patch.split('\n')[7][1:])
+
+        result = {
+            "before": {},
+            "after": {}
+        }
+        for key, value in before.items():
+            result['before'][key] = {}
+            result['before'][key]['source'] = before[key]
+            diffs = set(before[key].split('|')) - set(after[key].split('|'))
+            diffs_indexes = [before[key].split('|').index(item) for item in diffs]
+            result['before'][key]['difference'] = diffs_indexes
+
+        for key, value in after.items():
+            result['after'][key] = {}
+            result['after'][key]['source'] = after[key]
+            diffs = set(after[key].split('|')) - set(before[key].split('|'))
+            diffs_indexes = [after[key].split('|').index(item) for item in diffs]
+            result['after'][key]['difference'] = diffs_indexes
+        return result

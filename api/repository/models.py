@@ -37,7 +37,7 @@ class Repository(models.Model):
     @property
     def last_update(self):
         if self.commits.exists():
-            return self.commits.sort("-time").last().time
+            return self.commits.order_by("-time").last().time
         return None
 
 
