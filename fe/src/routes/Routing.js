@@ -9,6 +9,7 @@ import Repository from './Repository/Repository';
 import CreateRepository from './CreateRepository/CreateRepository';
 import Commit from './Commit/Commit';
 import CommitsList from './CommitsList/CommitsList';
+import Diff from './Diff/Diff';
 
 export const UnAuthorisedRouting = (
 	<Route path="/" component={App} >
@@ -26,6 +27,7 @@ export const AuthorisedRouting = (
 		<Route path="/user/:username/:repository" component={Repository} />
 		<Route path="/user/:username/:repository/push" component={Commit} />
 		<Route path="/user/:username/:repository/changes" component={CommitsList} />
+		<Route path="/user/:username/:repository/diff/:oldHash&:newHash" component={Diff} />
 		<Route path="*" component={NotFound} />
 	</Route>
 );

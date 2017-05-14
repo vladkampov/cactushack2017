@@ -36,7 +36,7 @@ class Repository extends Component {
 	renderNotes(abc_string) {
 		// const tunebook = new window.ABCJS.TuneBook(abc_string);
 		window.ABCJS.renderAbc('notation', abc_string, undefined, { staffwidth: 1000, scale: 1 });
-		window.ABCJS.renderMidi('midi', abc_string, undefined)
+		// window.ABCJS.renderMidi('midi', abc_string, undefined)
 		// const tuneObjectArrayMIDI = window.ABCJS.renderMidi('midi', abc_string);
 	}
 

@@ -1,6 +1,7 @@
 import { observable, action } from 'mobx';
 import { getRepositories, createRepository, getRepository } from '../api/core/repositories';
 import { uploadFile, pushCommit } from '../api/core/tracks';
+import { getDiff } from '../api/core/diff';
 
 export class RepositoriesStore {
 	@observable repositories = [];
@@ -35,5 +36,12 @@ export class RepositoriesStore {
 	// eslint-disable-next-line
 	@action pushCommit(file) {
 		return pushCommit(file).then(data => data);
+	}
+
+	// eslint-disable-next-line
+	@action getDiff(oldDiff, newDiff) {
+		return getDiff(oldDiff, newDiff).then(data => {
+			console.log(data);
+		})
 	}
 }
