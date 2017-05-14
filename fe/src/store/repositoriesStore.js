@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 import { getRepositories, createRepository } from '../api/core/repositories';
-import { uploadFile } from '../api/core/track';
+import { uploadFile } from '../api/core/tracks';
 
 export class RepositoriesStore {
 	@observable repositories = [];
