@@ -25,8 +25,9 @@ class Repository extends Component {
 	// eslint-disable-next-line
 	handleDrop = (acceptedFiles, rejectedFiles) => {
 		console.log(acceptedFiles, rejectedFiles);
-
-		this.props.repositoriesStore.uploadFile(acceptedFiles[0], this.props.params.repository);
+    const formData = new FormData();
+    formData.append('file', acceptedFiles[0]);
+		this.props.repositoriesStore.uploadFile(formData, this.props.params.repository);
 	}
 
  	render() {
