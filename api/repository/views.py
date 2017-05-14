@@ -64,42 +64,8 @@ class TrackViewSet(viewsets.ModelViewSet):
             return gtp2abc(file)
         return {'Track': file.read()}
 
-    def create_or_update(self, request, update=False):
-        file = request.data['file']
-        tracks = self.convert(file)
-        repository = Repository.objects.get(title=request.data['repository'],
-                                            owner=request.user)
-        files_list = []
-        created_tracks = []
-        for track_title, score in tracks.items():
-            # Save file to disk
-            file_path = os.path.join(repository.path_to_repo, track_title)
-            files_list.append(file_path)
-
-            with open(file_path, "w") as text_file:
-                print(score, file=text_file)
-
-            if not update:
-                created_tracks.append(Track.objects.create(title=track_title, repository=repository))
-
-        # Add files to commit
-        index = repository.git_repository.index
-        index.add(files_list)
-        author = git.Actor(repository.owner.username, "test@test.com")
-        commiter = git.Actor(request.user.username, "test@test.com")
-        commit_message = "Added tracks: {}".format(tracks.keys())
-        commit = index.commit(message=commit_message,
-                              author=author,
-                              committer=commiter)
-
-        # Create Commit object
-        Commit.objects.create(message=commit_message,
-                              commiter=request.user.username,
-                              repository=repository,
-                              hash=commit.hexsha)
-        return created_tracks
-
     def create(self, request):
+        print(request.data)
         update = request.data.get('update')
         file = request.data['file']
         tracks = self.convert(file)
@@ -123,7 +89,7 @@ class TrackViewSet(viewsets.ModelViewSet):
         index.add(files_list)
         author = git.Actor(repository.owner.username, "test@test.com")
         commiter = git.Actor(request.user.username, "test@test.com")
-        commit_message = request.data.get('desription') or "Added tracks: {}".format(tracks.keys())
+        commit_message = request.data.get('message') or "Added tracks: {}".format(tracks.keys())
         commit = index.commit(message=commit_message,
                               author=author,
                               committer=commiter)
@@ -141,18 +107,13 @@ class TrackViewSet(viewsets.ModelViewSet):
             serializer = self.get_serializer(created_tracks, many=True)
         return Response(serializer.data)
 
-    def update(self, request, pk=None):
-        self.create_or_update(request, update=True)
-        tracks = Track.objects.filter(repository__owner=request.user,
-                                      repository__title=request.data['repository'])
-        serializer = self.get_serializer(list(tracks), many=True)
-        return Response(serializer.data)
-
 
 class RepositoryDiffView(APIView):
     def get(self, request, format=None):
         old_commit_hash = request.query_params['old_commit']
         new_commit_hash = request.query_params['new_commit']
+
+        git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
 
         result = {
             'sources': {
@@ -161,9 +122,8 @@ class RepositoryDiffView(APIView):
             }
         }
 
-        git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
         new_commit = git_repo.commit(new_commit_hash)
-        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
+        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode().split('\n')
         # I'm sorry
         diffs = {
             'before': [],
@@ -171,21 +131,27 @@ class RepositoryDiffView(APIView):
         }
 
         for i, line in enumerate(diff):
-            if line.startswith('-'):
-                if i < len(diff) and diff[i+1].startswith('+'):
-                    line_diffs = set(line.split(' ')) - set(diff[i+1].split(' '))
-                    next_line_diffs = set(diff[i+1].split(' ')) - set(line.split(' '))
+            if line.startswith('-')and i < len(diff) and diff[i+1].startswith('+'):
+                    # Cut +-
+                    next_line = diff[i+1][1:]
+                    line = line[1:]
 
-                    diffs['before'] = [line.split(' ').index(item) for item in line_diffs]
-                    diffs['after'] = [diff[i+1].split(' ').index(item) for item in next_line_diffs]
+                    line_diffs = set(line.split(' ')) - set(next_line.split(' '))
+                    next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
 
-            elif line.startswith('+'):
-                if i < len(diff) and diff[i+1].startswith('-'):
-                    line_diffs = set(line.split(' ')) - set(diff[i+1].split(' '))
-                    next_line_diffs = set(diff[i+1].split(' ')) - set(line.split(' '))
+                    diffs['before'] = [(i, line.split(' ').index(item)) for item in line_diffs]
+                    diffs['after'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
 
-                    diffs['after'] = [line.split(' ').index(item) for item in line]
-                    diffs['before'] = [diff[i+1].split(' ').index(item) for item in next_line_diffs]
+            elif line.startswith('+') and i < len(diff) and next_line.startswith('-'):
+                    # Cut +-
+                    next_line = diff[i+1][1:]
+                    line = line[1:]
+
+                    line_diffs = set(line.split(' ')) - set(next_line.split(' '))
+                    next_line_diffs = set(next_line.split(' ')) - set(line.split(' '))
+
+                    diffs['after'] = [(i, line.split(' ').index(item)) for item in line]
+                    diffs['before'] = [(i, next_line.split(' ').index(item)) for item in next_line_diffs]
         result['diffs'] = diffs
 
         return Response(result)
