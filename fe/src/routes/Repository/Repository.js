@@ -60,7 +60,7 @@ class Repository extends Component {
 			<section className="Repository">
 				<div className="container">
 					<h1><Link to={`/user/${this.props.params.username}`}>{this.props.params.username}</Link> <small><i className="fa fa-arrow-circle-o-right" aria-hidden="true" /></small> {this.props.params.repository}
-							<Link to="" className="btn btn-success pull-right">Make changes</Link>
+							<Link to={`/user/${this.props.params.username}/${currentRepository.title}/push`} className="btn btn-success pull-right">Make changes</Link>
 					</h1>
 					{currentRepository.commits.length ? (
 						<div>
@@ -75,7 +75,7 @@ class Repository extends Component {
 									</div>
 								</div>
 								<div className="col-md-3">
-									<p><Link to="/">{currentRepository.commits.length} commit(s)</Link></p>
+									<p><Link to="/">{currentRepository.commits.length} change(s)</Link></p>
 								</div>
 								<div className="col-md-3">
 									<p><Link to="/">Collaborators</Link></p>
@@ -90,7 +90,7 @@ class Repository extends Component {
 						</div>
 					) : (
 						<div className="drop text-center">
-							<p>Oh Uh! Your repository is empty so far. <br />Upload your <b>ABC/GTP/MIDI</b> file to make first commit.</p>
+							<p>Oh Uh! Your repository is empty so far. <br />Upload your <b>ABC/GTP/MIDI</b> file to start your history.</p>
 							<Dropzone onDrop={this.handleDrop}>
 								{({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
 							    if (isDragActive) {

@@ -26,7 +26,7 @@ class Account extends Component {
 						</div>
 						<div className="col-md-9">
 							<h2>Your repositories <span className="badge">{`${this.props.repositoriesStore.repositories.length}`}</span>
-								<Link to={`/user/${this.props.params.username}/create`} className="btn btn-success pull-right">New repo</Link>
+								<Link to={`/user/${this.props.params.username}/create`} className="btn btn-success pull-right">New track</Link>
 							</h2>
 							<div className="row">
 								{this.props.repositoriesStore.repositories.length ? this.props.repositoriesStore.repositories.map(data => {
@@ -40,12 +40,12 @@ class Account extends Component {
 										</div>
 									)
 								}) : (
-									<p className="col-md-12">{'You don\'t have repo\'s so far. You should create one.'}</p>
+									<p className="col-md-12">{'You don\'t have track\'s so far. You should create one.'}</p>
 								)}
 							</div>
 						</div>
 					</div>
-					<h2>Commit history</h2>
+					<h2>Changes history</h2>
 					<div className="row">
 						{this.props.repositoriesStore.commitHistory.length ? this.props.repositoriesStore.commitHistory.map(data => {
 							return (
@@ -58,7 +58,7 @@ class Account extends Component {
 								</div>
 							)
 						}) : (
-								<p className="col-md-12">{'You don\'t have commit\'s so far. Should you create one?'}</p>
+								<p className="col-md-12">{'You have not make changes so far. Should you create one?'}</p>
 						)}
 					</div>
 				</div>

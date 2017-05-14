@@ -7,6 +7,7 @@ import NotFound from './NotFound/NotFound';
 import Login from './Login/Login';
 import Repository from './Repository/Repository';
 import CreateRepository from './CreateRepository/CreateRepository';
+import Commit from './Commit/Commit';
 
 export const UnAuthorisedRouting = (
 	<Route path="/" component={App} >
@@ -22,6 +23,7 @@ export const AuthorisedRouting = (
 		<Route path="/user/:username" component={Account} />
 		<Route path="/user/:username/create" component={CreateRepository} />
 		<Route path="/user/:username/:repository" component={Repository} />
+		<Route path="/user/:username/:repository/push" component={Commit} />
 		<Route path="*" component={NotFound} />
 	</Route>
 );

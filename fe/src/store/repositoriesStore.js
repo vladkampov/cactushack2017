@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx';
 import { getRepositories, createRepository, getRepository } from '../api/core/repositories';
-import { uploadFile } from '../api/core/tracks';
+import { uploadFile, pushCommit } from '../api/core/tracks';
 
 export class RepositoriesStore {
 	@observable repositories = [];
@@ -30,5 +30,10 @@ export class RepositoriesStore {
 			this.currentRepository = data.results[0];
 			return data.results[0];
 		});
+	}
+
+	// eslint-disable-next-line
+	@action pushCommit(file) {
+		return pushCommit(file).then(data => data);
 	}
 }

@@ -9,4 +9,9 @@ export function uploadFile(file, repository) {
 		'body': file,
 	});
 }
-
+export function pushCommit(file, repository) {
+	return doFetchCall(`${CORE_END_POINT_URL}`, {
+		'method': 'PUT',
+		'body': file,
+	});
+}
