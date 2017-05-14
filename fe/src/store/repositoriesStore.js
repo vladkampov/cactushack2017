@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx';
 import { getRepositories, createRepository } from '../api/core/repositories';
+import { uploadFile } from '../api/core/track';
 
 export class RepositoriesStore {
 	@observable repositories = [];
@@ -13,6 +14,13 @@ export class RepositoriesStore {
 	@action createRepository(username, title, description) {
 		return createRepository(username, title, description).then(data => {
 			this.repositories.push(data);
+			return data;
+		});
+	}
+
+	@action uploadFile(file, repository) {
+		uploadFile(file, repository).then(data => {
+			console.log(data, this)
 			return data;
 		});
 	}

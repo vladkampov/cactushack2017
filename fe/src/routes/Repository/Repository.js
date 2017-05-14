@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router';
 import Dropzone from 'react-dropzone'; // eslint-disable-line
 import './Repository.scss';
 
+@inject('repositoriesStore')
+@observer
 class Repository extends Component {
 	static defaultProps = { params: {} };
 
@@ -22,6 +25,8 @@ class Repository extends Component {
 	// eslint-disable-next-line
 	handleDrop = (acceptedFiles, rejectedFiles) => {
 		console.log(acceptedFiles, rejectedFiles);
+
+		this.props.repositoriesStore.uploadFile(acceptedFiles[0], this.props.params.repository);
 	}
 
  	render() {
