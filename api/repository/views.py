@@ -113,7 +113,7 @@ class TrackViewSet(viewsets.ModelViewSet):
             files_list.append(file_path)
 
             with open(file_path, "w") as text_file:
-                print(score, file=text_file)
+                print(score.decode(), file=text_file)
 
             if not update:
                 created_tracks.append(Track.objects.create(title=track_title, repository=repository))
@@ -159,19 +159,17 @@ class RepositoryDiffView(APIView):
         diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
         # I'm sorry
         before, after = diff.split('-b')[-1].split('+b')
-        before = before.split('/n')
-        after = after.split('/n')
 
-        old_diffs = set(before.split('|')) - set(after.split('|'))
-        new_diffs = set(after.split('|')) - set(before.split('|'))
+        old_diffs = set(before.split(' ')) - set(after.split(' '))
+        new_diffs = set(after.split(' ')) - set(before.split(' '))
         result = {
             'sources': {
                 'before': git_repo.git.show('{}:{}'.format(old_commit_hash, "Track")),
                 'after': git_repo.git.show('{}:{}'.format(new_commit_hash, "Track")),
             },
             'changes': {
-                'before': [before.split('|').index(item) for item in old_diffs],
-                'after': [after.split('|').index(item) for item in new_diffs],
+                'before': [before.split(' ').index(item) for item in old_diffs],
+                'after': [after.split(' ').index(item) for item in new_diffs],
             }
         }
 
