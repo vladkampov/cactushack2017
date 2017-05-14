@@ -123,7 +123,7 @@ class TrackViewSet(viewsets.ModelViewSet):
         index.add(files_list)
         author = git.Actor(repository.owner.username, "test@test.com")
         commiter = git.Actor(request.user.username, "test@test.com")
-        commit_message = "Added tracks: {}".format(tracks.keys())
+        commit_message = request.data.get('desription') or "Added tracks: {}".format(tracks.keys())
         commit = index.commit(message=commit_message,
                               author=author,
                               committer=commiter)
@@ -156,16 +156,16 @@ class RepositoryDiffView(APIView):
 
         git_repo = Commit.objects.get(hash=new_commit_hash).repository.git_repository
         new_commit = git_repo.commit(new_commit_hash)
-        diff = new_commit.diff(old_commit_hash)
-        import ipdb; ipdb.set_trace()
+        diff = new_commit.diff(old_commit_hash, create_patch=True)[0].diff.decode()
         # I'm sorry
-        before = json.loads(diff.patch.split('\n')[5][1:])
-        after = json.loads(diff.patch.split('\n')[7][1:])
+        before, after = diff.split('-b')[-1].split('+b')
+        before = before.split('/n')
+        after = after.split('/n')
+        print(before)
+        print(after)
+        import ipdb; ipdb.set_trace()
+        return
 
-        result = {
-            "before": {},
-            "after": {}
-        }
         for key, value in before.items():
             result['before'][key] = {}
             result['before'][key]['source'] = before[key]
